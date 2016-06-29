@@ -13,9 +13,9 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "waterfall-columns-grid": "^1.0.0",
     "iron-component-page": "^1.1.7",
     "iron-demo-helpers": "^1.2.3",
-    "webcomponentsjs": "^0.7.22"
+    "webcomponentsjs": "^0.7.22",
+    "waterfall-columns-grid": "^1.0.0"
   }
 }

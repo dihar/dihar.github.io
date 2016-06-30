@@ -1,0 +1,44 @@
+
+
+@white-icon-list: @aim @building @cap @feedback @medal @schoolbag;
+@white-icon-hover-list: @aim-hover @building-hover @cap-hover @feedback-hover @medal-hover @schoolbag-hover;
+
+@big-icons: @fish @rabbit @helm;
+
+@social-icons-disable: @fb-disable @vk-disable @tw-disable @ok-disable;
+@social-icons: @fb @vk @tw @ok;
+
+.sprite-names-icons(@sprites, @i: 1) when (@i <= length(@sprites)) {
+	@sprite: extract(@sprites, @i);
+	@sprite-name: e(extract(@sprite, 10));
+	.icon-@{sprite-name} {
+		.sprite(@sprite);
+	}
+	.sprite-names-icons(@sprites, @i + 1);
+}
+
+.sprite-names-icons-hover(@sprites, @sprites-hover, @i: 1) when (@i <= length(@sprites)) {
+	@sprite: extract(@sprites, @i);
+	@sprite-name: e(extract(@sprite, 10));
+	@sprite-hover: e(extract(@sprites-hover, @i));
+	.icon-@{sprite-name} {
+		.sprite-position(@sprite-hover);
+	}
+	.sprite-names-icons-hover(@sprites, @sprites-hover, @i + 1)
+}
+
+
+
+.button-real(){
+	display: inline-block;
+	border-radius: 3px;
+	color: #fff;
+	border: none;
+	outline: none;
+	padding: 9px 15px;
+	position: relative;
+	cursor: pointer;
+	&:active{
+		top: 1px;
+	}
+}

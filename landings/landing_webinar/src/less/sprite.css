@@ -1,0 +1,120 @@
+/*
+Icon classes can be used entirely standalone. They are named after their original file names.
+
+Example usage in HTML:
+
+`display: block` sprite:
+<div class="icon-home"></div>
+
+To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
+
+// CSS
+.icon {
+  display: inline-block;
+}
+
+// HTML
+<i class="icon icon-home"></i>
+*/
+.icon-blue-brand {
+  background-image: url(./dist/img/sprite.png);
+  background-position: -104px -86px;
+  width: 78px;
+  height: 83px;
+}
+.icon-blue-clown {
+  background-image: url(./dist/img/sprite.png);
+  background-position: 0px -84px;
+  width: 86px;
+  height: 90px;
+}
+.icon-blue-loupe {
+  background-image: url(./dist/img/sprite.png);
+  background-position: -104px 0px;
+  width: 86px;
+  height: 86px;
+}
+.icon-blue-money {
+  background-image: url(./dist/img/sprite.png);
+  background-position: 0px 0px;
+  width: 104px;
+  height: 84px;
+}
+.icon-cravat {
+  background-image: url(./dist/img/sprite.png);
+  background-position: -190px 0px;
+  width: 71px;
+  height: 100px;
+}
+.icon-green-check {
+  background-image: url(./dist/img/sprite.png);
+  background-position: -261px -171px;
+  width: 32px;
+  height: 26px;
+}
+.icon-mini-camera {
+  background-image: url(./dist/img/sprite.png);
+  background-position: -261px -197px;
+  width: 20px;
+  height: 19px;
+}
+.icon-mini-play {
+  background-image: url(./dist/img/sprite.png);
+  background-position: -293px -171px;
+  width: 25px;
+  height: 25px;
+}
+.icon-mini-wifi {
+  background-image: url(./dist/img/sprite.png);
+  background-position: -281px -197px;
+  width: 22px;
+  height: 15px;
+}
+.icon-soc-fb-hover {
+  background-image: url(./dist/img/sprite.png);
+  background-position: -58px -174px;
+  width: 58px;
+  height: 57px;
+}
+.icon-soc-fb {
+  background-image: url(./dist/img/sprite.png);
+  background-position: -116px -174px;
+  width: 58px;
+  height: 57px;
+}
+.icon-soc-gp-hover {
+  background-image: url(./dist/img/sprite.png);
+  background-position: -174px -174px;
+  width: 58px;
+  height: 57px;
+}
+.icon-soc-gp {
+  background-image: url(./dist/img/sprite.png);
+  background-position: -190px -100px;
+  width: 58px;
+  height: 57px;
+}
+.icon-soc-tw-hover {
+  background-image: url(./dist/img/sprite.png);
+  background-position: -261px 0px;
+  width: 58px;
+  height: 57px;
+}
+.icon-soc-tw {
+  background-image: url(./dist/img/sprite.png);
+  background-position: 0px -174px;
+  width: 58px;
+  height: 57px;
+}
+.icon-soc-vk-hover {
+  background-image: url(./dist/img/sprite.png);
+  background-position: -261px -57px;
+  width: 57px;
+  height: 57px;
+}
+.icon-soc-vk {
+  background-image: url(./dist/img/sprite.png);
+  background-position: -261px -114px;
+  width: 57px;
+  height: 57px;
+}

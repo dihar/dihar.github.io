@@ -1,0 +1,800 @@
+<!doctype html>
+<html lang="ru-RU">
+	<head>
+		<meta charset="utf-8">
+		<title>Landing</title>
+		<meta name="description" content="landing page of CBS">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		
+		<meta property="og:title" content="Landing">
+		<meta property="og:url" content="this page">
+		<meta property="og:image" content="imgs/logo250х250.png" />
+		<meta property="og:description" content="landing page of CBS" />
+
+		<!--[if lt IE 9]>
+			<script src="bower_components/html5shiv/html5shiv.js"></script>
+			<script src="bower_components/respond/src/respond.js"></script>
+		<![endif]-->
+
+		<link rel="stylesheet" href="less/bootstrap.css">
+		<link rel="stylesheet" href="style.css">
+		<script src="js/jqBt.js"></script>
+		<script src="js/main-min.js"></script>
+
+	</head>
+	<body>
+	<!--[if lt IE 9]>
+	    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+	<![endif]-->
+	<input id="date-deadline" type="hidden" value="3 мая">
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2 col-sm-3 col-xs-4"><img src="imgs/logo.png" alt="E-mba.ru" class="logo"></div>
+                <div class="col-md-7 col-sm-5 hidden-xs">
+                    <nav>
+                        <ul class="menu">
+                            <li><a data-scroll="#forWhom" href="#forWhom">О программе</a></li>
+                            <li><a data-scroll="#diplomsAndForm" href="#diplomsAndForm">Результаты обучения</a></li>
+                            <li><a data-scroll="#teachers" href="#teachers">Преподаватели</a></li>
+                            <li><a data-scroll="#feedbackAndForm" href="#feedbackAndForm">Отзывы</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-md-3 col-sm-4 col-xs-6 pull-right">
+                    <div class="phone-caption">Бесплатный звонок по&nbsp;России</div>
+                    <a href="tel:+78007700930" class="phone">+7 (800) 770-09-30</a>
+                    <div class="call-me"><a href="#" data-toggle="modal" data-target="#call-me">Заказать звонок</a></div>
+                </div>
+            </div>
+            <nav>
+                <ul id="menu-collapse" class="menu collapse navbar-collapse">
+                    <li><a data-scroll="#youLearn" href="#youLearn">О программе</a></li>
+                    <li><a data-scroll="#diplomsAndForm" href="#diplomsAndForm">Результаты обучения</a></li>
+                    <li><a data-scroll="#teachers" href="#teachers">Преподаватели</a></li>
+                    <li><a data-scroll="#feedbackAndForm" href="#feedbackAndForm">Отзывы</a></li>
+                </ul>
+            </nav>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu-collapse" aria-expanded="false">
+                <span class="sr-only">Главное меню</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+    </header>
+
+	<main>
+
+	<section id="nameAndForm">
+		<div class="container">
+			<hgroup>
+				<div class="caption">
+					Эффективное управление людьми и деньгами
+				</div>
+				<h1>Курс «Директор по&nbsp;Маркетингу»</h1>
+			</hgroup>
+			<div class="row">
+				<div class="col-sm-4">
+					<ul class="list-checked-orange">
+						<li>За&nbsp;6&nbsp;недель освойте системный подход к&nbsp;увеличению и контролю потока клиентов. </li>
+						<li>Сканируйте клиентов,&nbsp;используя современную аналитику потребностей.</li>
+						<li>Увеличивайте выручку с&nbsp;каждого покупателя.</li>
+					</ul>
+				</div>
+				<div class="col-sm-5 col-sm-offset-3">
+					<div class="form-gray form-main">
+						<div class="form-top">
+							<div class="caption">
+								Заполните заявку и получите скидку <span class="background-darken">50%</span> на обучение
+							</div>
+							<div class="new-price">
+								18 900 <span class="rouble">Р</span>
+							</div>
+							<div class="old-price">
+								<del>27 000 <span class="rouble">Р</span></del>
+							</div>
+						</div>
+						<form action="">
+							<div class="form-group">
+								<input type="text" name="name" placeholder="Имя">
+							</div>
+							<div class="form-group">
+								<input type="tel" name="tel" placeholder="Телефон">
+							</div>
+							<div class="form-group">
+								<input type="email" name="name" placeholder="Электронная почта">
+							</div>
+							<button class="btn-orange">Получить консультацию</button>
+						</form>
+						<div class="form-bottom">
+							<p>
+								С&nbsp;вами свяжется специалист приемной комиссии и подробно расскажет о&nbsp;программе
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<section id="forWhom">
+		<div class="container">
+			<h2>Для кого этот курс?</h2>
+			<div class="row">
+				<div class="col-sm-6">
+					<h3>Вы готовы к&nbsp;карьерному росту?</h3>
+					<p>Обладаете ценным опытом в&nbsp;маркетинге. Но частичным, либо разрозненным. Научить отдельным навыкам уже недостаточно — нужно научиться видеть и решать задачи комплексно. Курс подготовит из&nbsp;вас специалиста, готового к&nbsp;карьерному скачку и высокой зарплате.</p>
+				</div>
+				<div class="col-sm-6">
+					<span class="for-whom-icon"></span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-7 pull-right">
+					<h3>Хотите повысить квалификацию?</h3>
+					<p>Это не&nbsp;основы маркетинга. Это неограниченный доступ к&nbsp;практическим инструментам привлечения и удержания покупателей. Кроме того, курс посвящен системному подходу к&nbsp;управлению товарным портфелем компании, ценообразованию, организации системы маркетинговой политики, эффективному управлению персоналом.</p>
+				</div>
+				<div class="col-sm-5">
+					<span class="for-whom-icon icon-rocket"></span>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-7">
+					<h3>Управляете компанией?</h3>
+					<p>Хотите увеличить поток клиентов, продажи и прибыль. Оптимизировав сайт, рекламу, соцсети, мобильные приложения, вы получите видимый результат в&nbsp;деньгах уже в&nbsp;процессе обучения.</p>
+				</div>
+				<div class="col-sm-5">
+					<span class="for-whom-icon icon-wheel"></span>
+				</div>
+			</div>
+			<button class="btn-orange" data-scroll="#last-form">Узнать подробнее</button>
+		</div>
+
+	</section>
+
+	<section id="reasonsAndForm" class="reasonsAndForm">
+		<div class="container">
+			<h2>4&nbsp;причины выбрать курс «Директор по&nbsp;маркетингу»</h2>
+			<div class="card">
+				<div class="title">Скорость</div>
+				<div class="num">1</div>
+				<p>
+					Воспользуйтесь возможностью освоить ключевые навыки выдающихся управленцев за&nbsp;2&nbsp;недели. Скорость обучения зависит только от&nbsp;вас. Здесь нет отстающих одногруппников, которые тормозят всю группу. Не&nbsp;ждите никого. Идите вперед.
+				</p>
+			</div>
+			<div class="card blue-card">
+				<div class="title">Деньги</div>
+				<div class="num">2</div>
+				<p>
+					Исследования доказывают, что выпускники программ CBS легче добиваются увеличения дохода уже в&nbsp;процессе или в&nbsp;первые месяцы по&nbsp;окончании обучения
+				</p>
+			</div>
+			<div class="card comfort">
+				<div class="title">Комфорт</div>
+				<div class="num">3</div>
+				<p>
+					Доступ к&nbsp;знаниям и&nbsp;практикам 24/7. Обучайтесь в&nbsp;своем темпе. Совмещайте обучение с&nbsp;работой, применяйте инструменты сразу. Гордитесь своими результатами!
+				</p>
+			</div>
+			<div class="card diploms">
+				<div class="title">Дипломы</div>
+				<div class="num">4</div>
+				<p>
+					Свидетельство о&nbsp;повышении квалификации c&nbsp;международным приложением. Диплом Европейской Ассоциации Дистанционного Обучения и&nbsp;Образования (European Distance Learning and Education Association)
+				</p>
+			</div>
+			<div class="price">
+				<div class="new-price">
+					18&nbsp;900&nbsp;<span class="rouble">Р</span>
+				</div>
+				<div class="old-price">
+					<del>37&nbsp;800&nbsp;<span class="rouble">Р</span></del>
+				</div>
+				<div class="discount">
+					Скидка на&nbsp;обучение&nbsp;<span class="background-darken">50%</span>
+				</div>
+			</div>
+			<div class="deadline">
+				<div class="title">Акция закончится через</div>
+				<div class="time">
+					<div class="digit days">
+						<div class="num">2</div>
+						<div class="caption">дня</div>
+					</div>
+					<div class="digit hours">
+						<div class="num">5</div>
+						<div class="caption">часов</div>
+					</div>
+					<div class="digit minutes">
+						<div class="num">17</div>
+						<div class="caption">минут</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="img-container">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-5 col-sm-offset-1">
+						<div class="form-main">
+							<div class="form-top">
+								<div class="caption">
+									Заполните заявку и получите скидку на&nbsp;обучение на&nbsp;курсе
+								</div>
+							</div>
+							<form action="">
+								<div class="form-group">
+									<input type="text" name="name" placeholder="Имя">
+								</div>
+								<div class="form-group">
+									<input type="tel" name="tel" placeholder="Телефон">
+								</div>
+								<div class="form-group">
+									<input type="email" name="name" placeholder="Электронная почта">
+								</div>
+								<button class="btn-orange">Оставить заявку на&nbsp;обучение</button>
+							</form>
+							<div class="form-bottom">
+								<p>
+									С&nbsp;вами свяжется специалист приемной комиссии и подробно расскажет о&nbsp;программе
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="whatInCourse">
+		<div class="container">
+			<h2>Что будет на&nbsp;курсе</h2>
+			<div class="row" id="timeline">
+				<div class="counter">
+					<div class="time">
+						<span class="digit">0</span>
+						<span class="caption">часов</span>
+					</div>
+				</div>
+				<div class="col-sm-8 items">
+					<div class="item">
+						<div class="time">
+							<span class="digit">25</span><br>
+							<span class="caption">часов</span>
+						</div>
+						<h3 class="title">Стратегия</h3>
+						<p>Оцениваем финансовые, операционные риски. Управляем портфелем продукции, активно руководим ценообразованием на&nbsp;всех&nbsp;уровнях производства и&nbsp;продвижения.</p>
+						<p>Выбираем из&nbsp;100000 оффлайн и&nbsp;онлайн инструментов оптимальные для&nbsp;своей компании и продуктов. Осваиваем новые каналы коммуникации. Ищем преимущества, выстраиваем верное позиционирование в&nbsp;конкурентной среде. Ретаргетинг, и&nbsp;ниш. Смежные рынки, новые регионы, экспорт. </p>
+					</div>
+					<div class="item">
+						<div class="time">
+							<span class="digit">27</span><br>
+							<span class="caption">часов</span>
+						</div>
+						<h3 class="title">Аналитика</h3>
+						<p>Big&nbsp;Data в&nbsp;маркетинге — анализ больших массивов и&nbsp;сроков окупаемости. Изучаем поведения пользователей.</p>
+						<p>Отслеживаем, откуда&nbsp;приходят конверсии. Расчет вложений в&nbsp;конверсию. Оценка эффективности с&nbsp;Google Analytics (Attribution Modeling Tool/инструмент сравнения моделей) и «Яндекс.Метрика».</p>
+					</div>
+					<div class="item">
+						<div class="time">
+							<span class="digit">65</span><br>
+							<span class="caption">часов</span>
+						</div>
+						<h3 class="title">Привлечение и&nbsp;удержание</h3>
+						<p>Лидогенерация: тренды&nbsp;2017. Ищем, тестируем, рассчитываем стоимость привлечения.</p>
+						<p>Фильтруем ЦА, подогреваем интерес, выращиваем не&nbsp;просто покупателей, а&nbsp;преданных фанатов бренда. Контекст, таргетинг, CPA, другое SEO и контент-маркетинг. Жив ли e-mail и как&nbsp;создаются великие SMM-стратегии. Осваиваем фичеринг Google Play, App Store.</p>
+					</div>
+					<div class="item">
+						<div class="time">
+							<span class="digit">29</span><br>
+							<span class="caption">часов</span>
+						</div>
+						<h3 class="title">Департамент маркетинга</h3>
+						<p>Отдел маркетинга в&nbsp;кризис: аутсорс, фриланс, маркетологи-универсалы. Определяем компетенции, распределяем ответственность, строим систему мотивации. Зачем нужна прозрачная система KPI. Тестируем новые способы управления командой.</p>
+					</div>
+					<div class="item">
+						<div class="time">
+							<span class="digit">31</span><br>
+							<span class="caption">часов</span>
+						</div>
+						<h3 class="title">Сайт</h3>
+						<p>Создаем с&nbsp;нуля или оптимизируем сайты, landing pages, мобильные версии. 100&nbsp;идей для&nbsp;A/B тестирования. Составляем грамотное ТЗ для&nbsp;дизайнеров и верстальщиков. Пользовательский интерфейс: почему&nbsp;клиенту уходит или ошибка, которую совершают все маркетологи.</p>
+					</div>
+					<div class="item">
+						<div class="time">
+							<span class="digit">13</span><br>
+							<span class="caption">часов</span>
+						</div>
+						<h3 class="title">Реклама и&nbsp;деньги</h3>
+						<p>Как убеждать, что&nbsp;метод финансирования «от&nbsp;возможного» приводит к&nbsp;непредсказуемому маркетингу и получать бюджет, который вам нужен. Разрабатываем крутые рекламные кампании и прогнозируем их эффективность. Используем внутренние ресурсы на&nbsp;100%.</p>
+					</div>
+				</div>
+				<div class="scrolling-card">
+					<p>Мы собрали в&nbsp;единую систему все&nbsp;способы, методы и приемы эффективного управления человеческими и финансовыми ресурсами.</p>
+					<p>Они работают у&nbsp;других. Пусть они работают у&nbsp;Вас.</p>
+					<hr>
+					<div class="programm-link">
+						<a href="#" target="_blank">
+							<span class="pdf-white-icon"></span>
+							<span class="text">Полная программа курса</span>
+							<br>
+							<span class="memory">130 кБ</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="diplomsAndForm" class="reasonsAndForm diplomsAndForm">
+		<div class="container">
+			<h2>Что в&nbsp;результате?</h2>
+			<div class="row list-results">
+				<div class="col-sm-6">
+					<ul class="list-checked-orange">
+						<li>Высокая скорость привлечения клиентов</li>
+						<li>Увеличение среднего чека</li>
+						<li>Предсказуемые клиенты</li>
+						<li>Аналитика, которая помогает на&nbsp;каждом этапе</li>
+						<li>В&nbsp;вашей команде только компетентные специалисты</li>
+						<li>Легко контролируете аутсорс и штат</li>
+						<li>Сайт и LP, с&nbsp;которых не&nbsp;хочется уходить</li>
+					</ul>
+				</div>
+				<div class="col-sm-6">
+					<ul class="list-checked-orange">
+						<li>Реклама, не&nbsp;как у&nbsp;всех. Доход больше, чем у&nbsp;других</li>
+						<li>Высокая конверсия, умножайте на&nbsp;10</li>
+						<li>Устойчивая стратегия на&nbsp;1&nbsp;год, 3 и 5 лет</li>
+						<li>Вам доверяют большие бюджеты</li>
+						<li>Увеличение личного дохода</li>
+						<li>Легко контролируете аутсорс и&nbsp;штат</li>
+						<li>Возможность вернуть 13% от&nbsp;стоимости обучения в&nbsp;2016&nbsp;году</li>
+					</ul>
+				</div>
+			</div>
+			<div class="diplom-column-right">
+				<div class="diplom-caption">
+					<h2>Получение дипломов и&nbsp;сертификатов</h2>
+				</div>
+				<div class="diplom right">
+					<a href="imgs/diploms/diplom2.jpg" data-lightbox="diploms">
+						<img src="imgs/diploms/diplom2-mini.jpg" alt="">
+					</a>
+				</div>
+			</div>
+			<div class="diplom-column-left">
+				<div class="diplom big">
+					<a href="imgs/diploms/diplom1.jpg" data-lightbox="diploms">
+						<img src="imgs/diploms/diplom1-mini.jpg" alt="">
+					</a>
+				</div>
+				<div class="diplom">
+					<a href="imgs/diploms/diplom3.jpg" data-lightbox="diploms" data-title="Диплом о профессиональной переподготовке, удостоверяющий право на ведение профессиональной деятельности в сфере менеджмента">
+						<img src="imgs/diploms/diplom3-mini.jpg" alt="Диплом о профессиональной переподготовке, удостоверяющий право на ведение профессиональной деятельности в сфере менеджмента">
+					</a>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+			<div class="price-deadline-wrap">
+				<div class="deadline">
+					<div class="wrap">
+						<div class="title">Акция закончится через</div>
+						<div class="time">
+							<div class="digit days">
+								<div class="num">2</div>
+								<div class="caption">дня</div>
+							</div>
+							<div class="digit hours">
+								<div class="num">5</div>
+								<div class="caption">часов</div>
+							</div>
+							<div class="digit minutes">
+								<div class="num">17</div>
+								<div class="caption">минут</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="price">
+					<div class="wrap">
+						<div class="new-price">
+							18&nbsp;900&nbsp;<span class="rouble">Р</span>
+						</div>
+						<div class="old-price">
+							<del>37&nbsp;800&nbsp;<span class="rouble">Р</span></del>
+						</div>
+						<div class="discount">
+							Скидка на&nbsp;обучение&nbsp;<span class="background-darken">50%</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		<div class="img-container">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-5 col-sm-offset-7">
+						<div class="form-main">
+							<div class="form-top">
+								<div class="caption">
+									Заполните заявку и получите скидку на&nbsp;обучение на&nbsp;курсе
+								</div>
+							</div>
+							<form action="">
+								<div class="form-group">
+									<input type="text" name="name" placeholder="Имя">
+								</div>
+								<div class="form-group">
+									<input type="tel" name="tel" placeholder="Телефон">
+								</div>
+								<div class="form-group">
+									<input type="email" name="name" placeholder="Электронная почта">
+								</div>
+								<button class="btn-orange">Оставить заявку на&nbsp;обучение</button>
+							</form>
+							<div class="form-bottom">
+								<p>
+									С&nbsp;вами свяжется специалист приемной комиссии и подробно расскажет о&nbsp;программе
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	<section id="processOfEducation">
+		<div class="container">
+			<h2>Процесс обучения</h2>
+			<div class="caption">
+				Обучение в&nbsp;City Business School проходит в&nbsp;интернете на&nbsp;сайте бизнес-школы, в&nbsp;новейшей системе дистанционного обучения&nbsp;(СДО)
+			</div>
+			<div class="processes">
+				<div class="">
+					<span class="circle-check-icon icon-fade"></span>
+					Обучение из&nbsp;любой точки мира</div>
+				<div class="">
+					<span class="circle-check-icon icon-fade"></span>
+					Обучайтесь с&nbsp;оптимальной для&nbsp;вас скоростью в&nbsp;удобное время</div>
+				<div class="">
+					<span class="circle-check-icon icon-fade"></span>
+					Совмещайте обучение с&nbsp;работой</div>
+				<div class="">
+					<span class="circle-check-icon icon-fade"></span>
+					Получайте практический результат с&nbsp;первого урока</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="teachers">
+		<div class="container">
+			<h2>Преподаватели</h2>
+			<div class="teachersList row">
+				<div class="teacher">
+					<div class="photo"><img src="imgs/teachers/mann.jpg" alt="Игорь Манн"></div>
+					<div class="name">Игорь<br>Манн</div>
+					<div class="profession">Российский маркетолог; основатель издательства деловой литературы «Манн, Иванов и&nbsp;Фербер»</div>
+				</div>
+				<div class="teacher">
+					<div class="photo"><img src="imgs/teachers/umar.jpg" alt="Михаил Умаров"></div>
+					<div class="name">Михаил<br>Умаров</div>
+					<div class="profession">Эксперт в&nbsp;области коммуникационного менеджмента, PR и&nbsp;Social Media</div>
+				</div>
+				<div class="teacher">
+					<div class="photo"><img src="imgs/teachers/ivanov.jpg" alt="Леонид Иванов"></div>
+					<div class="name">Леонид<br>Иванов</div>
+					<div class="profession">Руководитель школы Леонида Иванова, член Гильдии маркетологов России</div>
+				</div>
+				<div class="teacher">
+					<div class="photo"><img src="imgs/teachers/maya.jpg" alt="Майа Богданова"></div>
+					<div class="name">Майа<br>Богданова</div>
+					<div class="profession">Генеральный директор PR-агентства «Дискавери Центр»</div>
+				</div>
+				<div class="teacher">
+					<div class="photo"><img src="imgs/teachers/shest.jpg" alt="Алексей Шестаков"></div>
+					<div class="name">Алексей<br>Шестаков</div>
+					<div class="profession">Digital директор AFIMALL&nbsp;City</div>
+				</div>
+				<div class="teacher">
+					<div class="photo"><img src="imgs/teachers/glaz.jpg" alt="Лилия Глазова"></div>
+					<div class="name">Лилия<br>Глазова</div>
+					<div class="profession">Генеральный директор PR&nbsp;News</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="feedbackAndForm" class="reasonsAndForm feedbackAndForm">
+		<div class="container">
+			<h2>Почему тысячи специалистов выбрали City&nbsp;Business&nbsp;School для&nbsp;повышения квалификации</h2>
+			<ul class="flex-icon-list">
+				<li>
+					<span class="blue-icon icon-fade icon-cup"></span>
+					<div class="caption">
+						1-ое место в&nbsp;номинации “Лучшее дистанционное образование”
+					</div>
+				</li>
+				<li>
+					<span class="blue-icon icon-fade icon-building"></span>
+					<div class="caption">
+						Европейская аккредитация European Distance Learning and&nbsp;Education Association
+					</div>
+				</li>
+				<li>
+					<span class="blue-icon icon-fade icon-flag"></span>
+					<div class="caption">
+						1-ое место в&nbsp;номинации «Дистанционное и электронное корпоративное обучение»
+					</div>
+				</li>
+				<li>
+					<span class="blue-icon icon-fade icon-cap"></span>
+					<div class="caption">
+						Лидер по&nbsp;количеству студентов на&nbsp;программах дистанционного обучения
+					</div>
+				</li>
+				<li>
+					<span class="blue-icon icon-fade icon-newspaper"></span>
+					<div class="caption">
+						Входит в&nbsp;тройку лучших многопрофильных провайдеров корпоративного обучения
+					</div>
+				</li>
+			</ul>
+			<div class="feedback-column-left">
+				<div class="feedback-title">
+					Отзывы наших партнеров
+				</div>
+				<div class="card feedback2-card" data-toggle="modal" data-target="#feedback1">
+					<p>
+						Трудности, если ты&nbsp;что-то делаешь, бывают всегда; как и&nbsp;настроение, когда хочется опустить руки. Но&nbsp;вот тут-то и&nbsp;нужно еще активнее действовать, пытаться расти. Всегда есть выход, и&nbsp;не&nbsp;бывает неразрешимых проблем...
+					</p>
+					<div class="name">
+						Марат Сабирьянов
+					</div>
+					<div class="profession">
+						Главный инженер ЗАО «Газпромнефть-Терминал», бизнесмен
+					</div>
+					<div class="photo">
+						<img src="imgs/feedbacks/feedback2.jpg" alt="Марат Сабирьянов">
+					</div>
+				</div>
+			</div>
+			<div class="modal feedback-modal fade" id="feedback1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+				   	<div class="modal-content">
+				    	<div class="modal-body">
+							<div class="card card-modal feedback2-card">
+								<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+								<p>
+									Трудности, если ты&nbsp;что-то делаешь, бывают всегда; как и&nbsp;настроение, когда хочется опустить руки. Но&nbsp;вот тут-то и&nbsp;нужно еще активнее действовать, пытаться расти. Всегда есть выход, и&nbsp;не&nbsp;бывает неразрешимых проблем. Вот такая интересная история.	
+								</p>
+								<div class="name">
+									Марат Сабирьянов
+								</div>
+								<div class="profession">
+									Главный инженер ЗАО «Газпромнефть-Терминал», бизнесмен
+								</div>
+								<div class="photo">
+									<img src="imgs/feedbacks/feedback2.jpg" alt="Марат Сабирьянов">
+								</div>
+							</div>
+			    		</div>
+			    	</div>
+				</div>
+			</div>
+			<div class="feedback-column-right">
+				<div class="card feedback1-card" data-toggle="modal" data-target="#feedback2">
+					<p>
+						За&nbsp;2&nbsp;года обучения в&nbsp;CBS у&nbsp;меня увеличился поток клиентов, значительно расширилась география бизнеса, cтоимость одного дня моего семинара...<!--
+					--></p>
+					<div class="name">
+						Мария Тетерева
+					</div>
+					<div class="profession">
+						Генеральный директор ООО&nbsp;«Аквист»
+					</div>
+					<div class="photo">
+						<img src="imgs/feedbacks/feedback1.jpg" alt="Мария Тетерева">
+					</div>
+				</div>
+				<div class="modal feedback-modal fade" id="feedback2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+					   	<div class="modal-content">
+					    	<div class="modal-body">
+								<div class="card card-modal feedback2-card">
+									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+									<p>
+										За&nbsp;2&nbsp;года обучения в&nbsp;CBS у&nbsp;меня увеличился поток клиентов, значительно расширилась география бизнеса, cтоимость одного дня моего семинара в&nbsp;5&nbsp;раз, стоимость одного часа консультаций&nbsp;&mdash; в&nbsp;10&nbsp;раз, несмотря на&nbsp;то, что первоначальные цены и&nbsp;так были достаточно высокими. Заказчики довольны результатами моей работы и&nbsp;готовы платить. Достаточно часто клиенты обращают внимание, что одно из&nbsp;моих конкурентных преимуществ&nbsp;&mdash; постоянное обновление знаний. Мой статус эксперта благодаря бизнес-образованию существенно возрос<!--
+									--></p>
+									<div class="name">
+										Мария Тетерева
+									</div>
+									<div class="profession">
+										Генеральный директор ООО&nbsp;«Аквист»
+									</div>
+									<div class="photo">
+										<img src="imgs/feedbacks/feedback1.jpg" alt="Мария Тетерева">
+									</div>
+								</div>
+				    		</div>
+				    	</div>
+					</div>
+				</div>
+				<div class="card feedback3-card" data-toggle="modal" data-target="#feedback3">
+					<p>
+						CBS&nbsp;&mdash; это актуальная информация, примеры современных бизнес-лидеров и&nbsp;кейсы реальных компаний, чьи названия на&nbsp;слуху...
+					</p>
+					<div class="name">
+						Ирина Арефьева
+					</div>
+					<div class="profession">
+						Директор и владелец сети ресторанов быстрого питания «МакБургерс»
+					</div>
+					<div class="photo">
+						<img src="imgs/feedbacks/feedback3.jpg" alt="Ирина Арефьева">
+					</div>
+				</div>
+			</div>
+				<div class="modal feedback-modal fade" id="feedback3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div class="modal-dialog">
+					   	<div class="modal-content">
+					    	<div class="modal-body">
+								<div class="card card-modal feedback2-card">
+									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+									<p>
+										CBS&nbsp;&mdash; это актуальная информация, примеры современных бизнес-лидеров и&nbsp;кейсы реальных компаний, чьи названия на&nbsp;слуху...<!--
+									--></p>
+									<div class="name">
+										Ирина Арефьева
+									</div>
+									<div class="profession">
+										Директор и владелец сети ресторанов быстрого питания «МакБургерс»
+									</div>
+									<div class="photo">
+										<img src="imgs/feedbacks/feedback3.jpg" alt="Ирина Арефьева">
+									</div>
+								</div>
+				    		</div>
+				    	</div>
+					</div>
+				</div>
+			<div class="clearfix"></div>
+			<div class="price">
+				<div class="new-price">
+					18&nbsp;900&nbsp;<span class="rouble">Р</span>
+				</div>
+				<div class="old-price">
+					<del>37&nbsp;800&nbsp;<span class="rouble">Р</span></del>
+				</div>
+				<div class="discount">
+					Скидка на&nbsp;обучение&nbsp;<span class="background-darken">50%</span>
+				</div>
+			</div>
+			<div class="deadline">
+				<div class="title">Акция закончится через</div>
+				<div class="time">
+					<div class="digit days">
+						<div class="num">2</div>
+						<div class="caption">дня</div>
+					</div>
+					<div class="digit hours">
+						<div class="num">5</div>
+						<div class="caption">часов</div>
+					</div>
+					<div class="digit minutes">
+						<div class="num">17</div>
+						<div class="caption">минут</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="img-container">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-5 col-sm-offset-1">
+						<div class="form-main" id="last-form">
+							<div class="form-top">
+								<div class="caption">
+									Заполните заявку и получите скидку на&nbsp;обучение на&nbsp;курсе
+								</div>
+							</div>
+							<form action="">
+								<div class="form-group">
+									<input type="text" name="name" placeholder="Имя">
+								</div>
+								<div class="form-group">
+									<input type="tel" name="tel" placeholder="Телефон">
+								</div>
+								<div class="form-group">
+									<input type="email" name="name" placeholder="Электронная почта">
+								</div>
+								<button class="btn-orange">Оставить заявку на&nbsp;обучение</button>
+							</form>
+							<div class="form-bottom">
+								<p>
+									С&nbsp;вами свяжется специалист приемной комиссии и подробно расскажет о&nbsp;программе
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	</main>
+	
+
+	<footer>
+        <div class="container">
+            <div class="slogan">
+				Легко платить, когда знаешь, что&nbsp;заработаешь больше
+			</div>
+            <div class="row parthers">
+                <div class="col-sm-2 col-xs-4"></div>
+                <div class="col-sm-2 col-xs-4"></div>
+                <div class="col-sm-2 col-xs-4"></div>
+                <div class="col-sm-2 col-xs-4"></div>
+                <div class="col-sm-2 col-xs-4"></div>
+                <div class="col-sm-2 col-xs-4"></div>
+            </div>
+        </div>
+        <div class="contacts">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-4">
+						Главный сайт CBS: <a href="http://e-mba.ru/" target="_blank">www.e-mba.ru</a>
+						<br>
+						Сайт программы MINI-MBA: <a href="http://m-mba.ru/" target="_blank">www.m-mba.ru</a>
+					</div>
+					<div class="col-sm-4">
+						<a href="http://e-mba.ru/school/docs" target="_blank">
+							Лицензия на образовательную <br>Деятельность № 035 328
+						</a>
+					</div>
+					<div class="col-sm-4">
+						<a href="tel:+78007700930" class="phone">8 800 770 09 30</a>
+						<div class="phone-caption">Бесплатный звонок по России</div>
+					</div>
+				</div>
+			</div>
+		</div>
+    </footer>
+    <div class="modal fade" id="call-me" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+		   	<div class="modal-content">
+		    	<div class="modal-body form-main">
+					<div class="form-top">
+						<div class="caption">
+							Оставьте заявку и получите скидку на&nbsp;обучение на&nbsp;курсе
+						</div>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					</div>
+					<form action="">
+						<div class="form-group">
+							<input type="text" name="name" placeholder="Имя">
+						</div>
+						<div class="form-group">
+							<input type="tel" name="tel" placeholder="Телефон">
+						</div>
+						<div class="form-group">
+							<input type="email" name="name" placeholder="Электронная почта">
+						</div>
+						<button class="btn-orange">Оставить заявку на&nbsp;обучение</button>
+					</form>
+					<div class="form-bottom">
+						<p>
+							С&nbsp;вами свяжется специалист приемной комиссии и подробно расскажет о&nbsp;программе
+						</p>
+					</div>
+	    		</div>
+	    	</div>
+		</div>
+	</div>
+    <script src="js/lightbox.min.js"></script>
+	</body>
+</html>

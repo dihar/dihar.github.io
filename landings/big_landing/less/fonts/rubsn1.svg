@@ -1,0 +1,37 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
+<svg>
+<metadata>
+Created by FontForge 20120731 at Fri Feb 26 09:43:36 2016
+ By root
+The typeface was designed at ParaType in 2013.
+</metadata>
+<defs>
+<font id="PTRoubleSans" horiz-adv-x="556" >
+  <font-face 
+    font-family="PT Rouble Sans"
+    font-weight="400"
+    font-stretch="normal"
+    units-per-em="1000"
+    panose-1="2 0 1 1 1 1 1 1 1 1"
+    ascent="950"
+    descent="-50"
+    x-height="688"
+    cap-height="722"
+    bbox="-48 0 809 740"
+    underline-thickness="50"
+    underline-position="-50"
+    unicode-range="U+0020-2116"
+    strikethrough-position="0"
+  />
+<missing-glyph horiz-adv-x="233" 
+ />
+    <glyph glyph-name=".notdef" horiz-adv-x="233" 
+ />
+    <glyph glyph-name="space" unicode=" " horiz-adv-x="233" 
+ />
+
+    <glyph glyph-name="afii10094" unicode="&#x420;" horiz-adv-x="614" 
+d="M232 643v-290h103c38 0 152 7 152 145c0 144 -134 145 -152 145h-103zM71 296v57h95v347h182c130 0 210 -82 210 -202s-79 -202 -210 -202h-116v-103h126v-45h-126v-148h-66v148h-95v45h95v103h-95z" />
+  </font>
+</defs></svg>

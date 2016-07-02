@@ -1,0 +1,72 @@
+
+
+.sprite-names-icons(@sprites, @i: 1) when (@i <= length(@sprites)) {
+	@sprite: extract(@sprites, @i);
+	@sprite-name: e(extract(@sprite, 10));
+	.icon-@{sprite-name} {
+		.sprite(@sprite);
+	}
+	.sprite-names-icons(@sprites, @i + 1);
+}
+
+
+.sprite-names-icons-hover(@sprites, @sprites-hover, @i: 1) when (@i <= length(@sprites)) {
+	@sprite: extract(@sprites, @i);
+	@sprite-name: e(extract(@sprite, 10));
+	@sprite-hover: e(extract(@sprites-hover, @i));
+	.icon-@{sprite-name} {
+		.sprite-position(@sprite-hover);
+	}
+	.sprite-names-icons-hover(@sprites, @sprites-hover, @i + 1)
+}
+
+.helFontThin(){
+	font-family: 'helveticaneuecyrthin';
+}
+.helFontLight(){
+	font-family: 'helveticaneuecyrlight';
+}
+.helFontULight(){
+	font-family: 'helveticaneuecyrultralight';
+}
+
+.lg-min(@content){
+	@media(min-width: 1500px){
+		@content();
+	}
+}
+.md-h(@content){
+	@media(max-height: 725px) and (min-width: 992px){
+		@content();
+	}
+}
+.md(@content){
+	@media(max-width: 1199px){
+		@content();
+	}
+}
+.sm(@content){
+	@media(max-width: 991px){
+		@content();
+	}
+}
+.full-window-cancel(@content){
+	@media(max-height: 640px), (max-width: 991px){
+		@content();
+	}
+}
+.xs(@content){
+	@media(max-width: 767px){
+		@content();
+	}
+}
+.es(@content){
+	@media(max-width: 590px){
+		@content();
+	}
+}
+.ess(@content){
+	@media(max-width: 490px){
+		@content();
+	}
+}

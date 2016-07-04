@@ -1,0 +1,369 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<script>
+(function(){
+  'use strict';
+
+  window.DiharBehaviors = window.DiharBehaviors || {};
+
+  /*create one-level array*/
+  function arraySymplify(arr){
+    var newArr = [];
+    if(!Array.isArray(arr)){
+      return [arr];
+    }
+    arr.forEach(function(el){
+      if(!Array.isArray(el)){
+        newArr.push(el)
+      } else{
+        newArr = newArr.concat(arraySymplify(el));
+      }
+    });
+    return newArr;
+  }
+
+  /*find elements in light DOM*/
+  function findElem(selector){
+    return this.getContentChildren(this.contentSelector).map(function(el, i){
+      return Polymer.dom(el).querySelectorAll(selector);
+    });
+  };
+
+  /*inherit methods*/
+  function assign(srcObj){
+    if(this === window){
+      return false;
+    }
+    for(var key in srcObj){
+      if(srcObj.hasOwnProperty(key)){
+        this[key] = srcObj[key];
+      }
+    }
+    return this;
+  }
+
+  /*initial states of element*/
+  function initElementState(el, state){
+    return assign.call(el, state);
+  }
+
+  /*return object from array with keys from field 'name'*/
+  function arrToObjForName(arr, name){
+    var obj = {};
+    var name = name || 'name';
+    arr.forEach(function(el){
+      if(!!el[name]){
+        obj[el[name]] = el;
+      }
+    });
+    return obj;
+  }
+
+  /*return list of objects with elements which set in 'this.list'*/
+  function activateController(){
+
+    this.list = this.list || [];
+
+    /*check this.contentSelector*/
+    if(!this.$$(this.contentSelector = this.contentSelector || 'content')){
+      throw new Error('Wrong selector of parsing content! Show this.contentSelector.');
+    }
+
+    var states = this.list.map(function(el){
+
+      el.initial = el.initial || {};
+
+      var elems = arraySymplify(findElem.call(this, el.selector));
+
+      /*check element in dom*/
+      if(elems.length < 1){
+        if(!el.required){
+          return undefined;
+        }
+        throw new Error('Element '+el.name+' is required, show youre list object in controller!');
+      };
+
+      /*give state for element*/
+      if(!el.several){
+        elems = initElementState(elems[0], el.initial);
+      }else{
+        elems.forEach(function(elem, i){
+          assign.call(elem, el.initial[i] || el.initial[0]);
+        });
+      };
+
+      return {
+        name: el.name || 'default',
+        element: elems,
+        several: el.several,
+        listeners: el.listeners,
+        required: el.required,
+        state: assign.call(el.several ? [] : {} , el.initial)
+      };
+
+    }.bind(this)).filter(function(el){
+      return !!el;
+    });
+    bindingElements.call(this, states);
+    states = arrToObjForName(states, 'name');
+    return this._states = states;
+  };
+
+  /*add event listeners*/
+  function bindingElements(arr){
+    var host = this;
+
+    if(!Array.isArray(arr)){
+      arr = [arr];
+    };
+    arr.forEach(function(el){
+      for(var listener in el.listeners){
+
+        /*filter inherits properties*/
+        if(!el.listeners.hasOwnProperty(listener)){
+          return false;
+        }
+
+        /*if element alone add one listener, otherwise several listeners*/
+        if(!el.several){
+          host[el.listeners[listener]] = host[el.listeners[listener]] || function(){};
+          el.element.addEventListener(listener, host[el.listeners[listener]].bind(host));
+        }else{
+          var els = el;
+          el.element.forEach(function(el){
+            host[els.listeners[listener]] = host[els.listeners[listener]] || function(){};
+            el.addEventListener(listener, host[els.listeners[listener]].bind(host));
+          });
+        }
+      }
+    });
+  };
+  
+  /* refresh element's state*/
+  function updateState(el){
+    if(!el.several){
+      assign.call(el.element, el.state);
+    }else{
+      el.element.forEach(function(elem, i){
+        assign.call(elem, el.state[i] || el.state[0]);
+      });
+    };
+  }
+
+  function getElement(nameEl){
+    return this._states[nameEl] || false;
+  }
+
+  function getState(nameEl, nameState){
+    var states = {};
+    /** check elemnt*/
+    if(!this._states[nameEl]){
+      return false;
+    }
+    /** if we have several elements process it*/
+    if(this._states[nameEl].several){
+      states = [];
+      this._states[nameEl].state.forEach(function(el){
+        var temp = {};
+        temp[nameState] = el[nameState];
+        states.push(temp);
+      });
+    /* otherwise get state*/
+    } else {
+      states = this._states[nameEl].state[nameState];
+    }
+    return states || false;
+  }
+
+  function setState(nameEl, nameState, value){
+
+    /** check element*/
+    if(!this._states[nameEl]){
+      return false;
+    }
+    var elem = this._states[nameEl];
+    /** check value*/
+    if(value === undefined){
+      return false;
+    }
+    /** if we have several elements process it*/
+    if(elem.several){
+      /*if value is not array, make array*/
+      if(!Array.isArray(value)){
+        value = [value];
+      }
+      value.forEach(function(el, i){
+        if(!elem.state[i]){
+          elem.state[i] = {};
+        }
+        elem.state[i][nameState] = el;
+      });
+    } else {
+      elem.state[nameState] = value;
+    }
+    updateState(elem);
+    return true;
+  }
+
+  function addElemToController(config){
+
+    if(!config){
+      return false;
+    }
+
+    var el = {};
+    var elems = {};
+
+    config.initial = config.initial || {};
+
+    if(!config.element){
+
+      elems = arraySymplify(findElem.call(this, config.selector));
+
+      /*check element in dom*/
+      if(elems.length < 1){
+        if(!config.required){
+          return false;
+        }
+        throw new Error('Element '+config.name+' is required, show youre list object in controller!');
+      };
+
+    } else {
+      elems = config.element;
+      if(!Array.isArray(elems)){
+        elems = [elems];
+      }
+    }
+    /*give state for element*/
+    if(!config.several){
+      elems = initElementState(elems[0], config.initial);
+    }else{
+      elems.forEach(function(elem, i){
+        assign.call(elem, config.initial[i] || config.initial[0]);
+      });
+    };
+
+    el = {
+      name: config.name || 'default',
+      element: elems,
+      several: config.several,
+      listeners: config.listeners,
+      required: config.required,
+      state: assign.call(config.several ? [] : {} , config.initial)
+    };
+
+    this._states[config.name || 'default'] = el;
+
+    bindingElements.call(this, el);
+
+    updateState(el);
+
+    return true;
+  }
+  /** `simple-controller-behavior`
+    this behavior create add to element simple dispatcher, which can find, watch and controll elements
+
+  @polymerBehavior
+  */
+  DiharBehaviors.SimpleControllerBehavior = {
+    properties: {
+      /** 
+        @private
+      */
+      _states: Object,
+      /** selector of content tag, where find elements
+        @default content
+      */
+      contentSelector: String,
+      /** Array{
+        name: string, 
+        selector: String, 
+        required: Boolean, 
+        several: Boolean, 
+        listeners: {'listener': String}, 
+        initial: {'property': Value}
+        }
+        <br>
+        example:<br>
+        <br> [
+        <br>  {
+        <br>    name: 'button',
+        <br>    selector: '.main-button',
+        <br>    required: false,
+        <br>    several: false,
+        <br>    listeners: {
+        <br>      toControler: 'buttonHandler'
+        <br>    },
+        <br>    initial: {
+        <br>      disabled: true
+        <br>    }
+        <br>  },
+        <br>  {
+        <br>    name: 'checkbox',
+        <br>    selector: '.main-checkbox',
+        <br>    required: true,
+        <br>    several: true,
+        <br>    listeners: {
+        <br>      tap: 'changeCheck'
+        <br>    },
+        <br>    initial: {
+        <br>      checked: true,
+        <br>      disabled: false
+        <br>    }
+        <br>  }
+        <br> ];
+      */
+      list: Array
+    },
+
+    /** Activation of controller, connect listeners and states. 
+      <br> return Object{states}, example:
+      <br> name: config.name || 'default',
+      <br>{
+      <br>  button: {
+      <br>    element: Array of Elements,
+      <br>    several: Boolean,
+      <br>    listeners: Array of listeners,
+      <br>    required: Boolean,
+      <br>    state: {
+      <br>      disabled: true
+      <br>    }
+      <br>  },
+      <br>  checkbox: {
+      <br>    element: Array of Elements,
+      <br>    several: Boolean,
+      <br>    listeners: Array of listeners,
+      <br>    required: Boolean,
+      <br>    state: {
+      <br>      checked: true,
+      <br>      disabled: false
+      <br>    }
+      <br>  }
+      <br>}
+      */
+    activateController: activateController,
+
+    /** Getter of state, 
+      <br> params: (nameEl: String, nameState: String)
+      <br> return value of state or Array of states, if it's several elements
+    */
+    getState: getState,
+
+    /** Setter of state, 
+      <br> params: (nameEl: String, nameState: String, value)
+      <br> return true or false, if state didn't change*/
+    setState: setState,
+
+    /** Getter of element, 
+      <br> params: (nameEl: String)
+      <br> return element */
+    getElementInfo: getElement,
+
+    /** Add element to controller
+      <br> params: (config: Object ListItem(see list property))
+      */
+    addElementToController: addElemToController
+  };
+
+})();
+</script>

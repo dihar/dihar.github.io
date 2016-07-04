@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+  <head>
+    <title>style-updater demo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+    
+    <link rel="import" href="../../iron-icons/iron-icons.html">
+    
+    <link rel="import" href="../style-updater.html">
+
+    <style is="custom-style" include="demo-pages-shared-styles">
+    </style>
+  </head>
+  <body>
+
+    <div class="vertical-section-container centered">
+      <h3>With style-updater you can use custom properties with css selectors</h3>
+      <demo-snippet>
+        <template>
+          <style>
+            .list{
+              padding: 10px;
+            }
+            .item{
+              margin-bottom: 5px;
+              cursor: pointer;
+              color: #333;
+            }
+            .item:hover{
+              color: #999;
+            }
+          </style>
+          <dom-module id="shared-styles">
+            <template>
+              <style>
+                iron-icon.icon{
+                  --iron-icon-fill-color: rgba(25, 118, 210, 1);
+                  --iron-icon-stroke-color: rgba(25, 118, 210, 1);
+                }
+                .item:hover iron-icon.icon{
+                  --iron-icon-fill-color: rgba(25, 118, 210, 0.5);
+                  --iron-icon-stroke-color: rgba(25, 118, 210, 0.5);
+                }
+              </style>
+            </template>
+          </dom-module>
+          <style is="custom-style" include="shared-styles"></style>
+          <div is="style-updater" target=".icon" events=".list:mousemove">
+            <div class="list">
+              <div class="item">
+                <iron-icon class="icon" icon="icons:watch-later"></iron-icon>
+                <span class="text">Text 1</span>
+              </div>
+              <div class="item">
+                <iron-icon class="icon" icon="icons:visibility"></iron-icon>
+                <span class="text">Text 2</span>
+              </div>
+              <div class="item">
+                <iron-icon class="icon" icon="icons:view-week"></iron-icon>
+                <span class="text">Text 3</span>
+              </div>
+
+            </div>
+          </div>
+        </template>
+      </demo-snippet>
+
+      <demo-snippet>
+        <template>
+          <style>
+            .list{
+              padding: 10px;
+            }
+            .item{
+              margin-bottom: 5px;
+              cursor: pointer;
+              color: #333;
+            }
+            .item:hover{
+              color: #999;
+            }
+          </style>
+          <dom-module id="shared-styles">
+            <template>
+              <style>
+                iron-icon.icon{
+                  --iron-icon-fill-color: rgba(25, 118, 210, 1);
+                  --iron-icon-stroke-color: rgba(25, 118, 210, 1);
+                }
+                input:checked ~ iron-icon.icon{
+                  --iron-icon-fill-color: rgba(25, 118, 210, 0.5);
+                  --iron-icon-stroke-color: rgba(25, 118, 210, 0.5);
+                }
+              </style>
+            </template>
+          </dom-module>
+          <style is="custom-style" include="shared-styles"></style>
+          <div is="style-updater" target=".icon" events="input:click">
+            <div class="list">
+              <div class="item">
+                <input type="checkbox" >
+                <iron-icon class="icon" icon="icons:watch-later"></iron-icon>
+                <span class="text">Text 1</span>
+              </div>
+              <div class="item">
+                <input type="checkbox" >
+                <iron-icon class="icon" icon="icons:visibility"></iron-icon>
+                <span class="text">Text 2</span>
+              </div>
+              <div class="item">
+                <input type="checkbox" >
+                <iron-icon class="icon" icon="icons:view-week"></iron-icon>
+                <span class="text">Text 3</span>
+              </div>
+
+            </div>
+          </div>
+        </template>
+      </demo-snippet>
+    </div>
+
+  </body>
+</html>

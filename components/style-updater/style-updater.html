@@ -1,0 +1,89 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<link rel="import" href="simple-controller-behavior.html">
+
+<!--
+`style-updater`
+style updater allows update custom properties when some events fire 
+<br> `style updater` exendes `<div>` : `<div is="style-updater" target=".icon" events="this:click">`
+@element style-updater
+@homepage https://dihar.github.io/components/style-updater/
+@polymerBehavior DiharBehaviors.SimpleControllerBehavior
+@demo demo/index.html 
+-->
+
+<dom-module id="style-updater">
+  <template>
+    <content></content>
+  </template>
+  <script>
+    (function() {
+      'use strict';
+
+      Polymer({
+        is: 'style-updater',
+        extends: 'div',
+        properties: {
+          /** target of element, which styles will be updeted, any selector 
+          */
+          target: String,
+          /** listenres for style updating, example
+            <br> events="this:mousemove, .paternt-container:mouseenter|mouseleave"
+          */
+          events: String
+        },
+        behaviors:[
+          DiharBehaviors.SimpleControllerBehavior
+        ],
+        attached: function(){
+          if(!this.target){
+            return false;
+          }
+          this.activateController();
+          this.addElementToController({
+            name: this.target,
+            selector: this.target,
+            several: true
+          });
+          this._parseEvents();
+        },
+        /**Update costom style of target styles*/
+        styleUpdate: function(){
+          var elements = this.getElementInfo(this.target)
+          if(elements){
+            elements.element.forEach(function(el){
+              el.updateStyles();
+            });
+          }
+        },
+        _parseEvents: function(){
+          if(!this.events){
+            return false;
+          }
+          var pairs = this.events.split(/[,;]\s*/);
+          pairs.forEach(function(ev){
+            var eventPair = ev.split(/\s*:\s*/);
+            if(eventPair[0] === 'this'){
+              eventPair[1].split('|').forEach(function(listener){
+                this.addEventListener(listener, this.styleUpdate.bind(this));
+              }.bind(this));
+            } else {
+              eventPair[1].split('|').forEach(function(listener){
+                this.addElementToController({
+                  name: eventPair[0],
+                  selector: eventPair[0],
+                  several: true,
+                  listeners: {
+                    listener: 'styleUpdate'
+                  }
+                });
+                this.addEventListener(listener, this.styleUpdate.bind(this));
+              }.bind(this));
+            }
+          }.bind(this));
+          
+        }
+      });
+    })();
+  </script>
+</dom-module>

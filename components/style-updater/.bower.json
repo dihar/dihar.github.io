@@ -30,10 +30,9 @@
   "_resolution": {
     "type": "version",
     "tag": "v1.0.0",
-    "commit": "47758449e02187836dc9de3c8742989fc9a62233"
+    "commit": "56131eb7f10ee50dac276a64f3ce78d25366055d"
   },
   "_source": "https://github.com/dihar/style-updater.git",
   "_target": "^1.0.0",
-  "_originalSource": "style-updater",
-  "_direct": true
+  "_originalSource": "style-updater"
 }

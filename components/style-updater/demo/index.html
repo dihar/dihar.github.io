@@ -38,7 +38,7 @@
           <dom-module id="shared-styles">
             <template>
               <style>
-                iron-icon.icon{
+                .item iron-icon.icon{
                   --iron-icon-fill-color: rgba(25, 118, 210, 1);
                   --iron-icon-stroke-color: rgba(25, 118, 210, 1);
                 }
@@ -50,7 +50,7 @@
             </template>
           </dom-module>
           <style is="custom-style" include="shared-styles"></style>
-          <div is="style-updater" target=".icon" events=".list:mousemove">
+          <div is="style-updater" target=".icon" events=".list:mousemove; this:click">
             <div class="list">
               <div class="item">
                 <iron-icon class="icon" icon="icons:watch-later"></iron-icon>
@@ -88,11 +88,11 @@
           <dom-module id="shared-styles">
             <template>
               <style>
-                iron-icon.icon{
+                iron-icon.icon1{
                   --iron-icon-fill-color: rgba(25, 118, 210, 1);
                   --iron-icon-stroke-color: rgba(25, 118, 210, 1);
                 }
-                input:checked ~ iron-icon.icon{
+                input:checked ~ iron-icon.icon1{
                   --iron-icon-fill-color: rgba(25, 118, 210, 0.5);
                   --iron-icon-stroke-color: rgba(25, 118, 210, 0.5);
                 }
@@ -100,21 +100,21 @@
             </template>
           </dom-module>
           <style is="custom-style" include="shared-styles"></style>
-          <div is="style-updater" target=".icon" events="input:click">
+          <div is="style-updater" target=".icon1" events="input:click">
             <div class="list">
               <div class="item">
                 <input type="checkbox" >
-                <iron-icon class="icon" icon="icons:watch-later"></iron-icon>
+                <iron-icon class="icon1" icon="icons:watch-later"></iron-icon>
                 <span class="text">Text 1</span>
               </div>
               <div class="item">
                 <input type="checkbox" >
-                <iron-icon class="icon" icon="icons:visibility"></iron-icon>
+                <iron-icon class="icon1" icon="icons:visibility"></iron-icon>
                 <span class="text">Text 2</span>
               </div>
               <div class="item">
                 <input type="checkbox" >
-                <iron-icon class="icon" icon="icons:view-week"></iron-icon>
+                <iron-icon class="icon1" icon="icons:view-week"></iron-icon>
                 <span class="text">Text 3</span>
               </div>
 

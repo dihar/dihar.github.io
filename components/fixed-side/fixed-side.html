@@ -1,0 +1,136 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../app-layout/app-scroll-effects/app-scroll-effects-behavior.html">
+<link rel="import" href="../iron-resizable-behavior/iron-resizable-behavior.html">
+<!--
+`fixed-side`
+
+allows create affix effect side, parent container must have relative position,
+content of `fixed-side` will be fixed when window 
+scrolling between top parent container and bottom container
+
+@element style-updater
+@homepage https://dihar.github.io/components/fixed-side/
+@demo demo/index.html 
+-->
+
+<dom-module id="fixed-side">
+  <template>
+    <style>
+      :host {
+        display: block;
+        width: 100%;
+        height: 100%;
+        position: relative;
+      }
+    </style>
+    <div id="content">
+      <content>
+        
+      </content>  
+    </div>
+  </template>
+  <script>
+    (function() {
+      'use strict';
+
+      function getOffset(el){
+        var top = 0;
+        var left = 0;
+        var nextElement = el;
+        while(nextElement !== null){
+          top+=nextElement.offsetTop;
+          left+=nextElement.offsetLeft;
+          if(getComputedStyle(nextElement).position === 'fixed'){
+            nextElement = null;
+            top += window.pageYOffset;
+            break;
+          }
+          nextElement = nextElement.offsetParent;
+        }
+        return {top: top, left: left};
+      }
+
+      Polymer({
+        is: 'fixed-side',
+        properties: {
+          _top: 0,
+          _left: 0,
+          _width: 0,
+          _height: 0,
+          _contentHeight: 0,
+          _lastScroll: 0,
+          /** distanse to window top at which container scrolls
+          */
+          top: {
+            type: Number,
+            value: 0
+          },
+          /** distanse to window bottom at which container stops to scroll
+          */
+          bottom: {
+            type: Number,
+            value: 0
+          },
+          _state: ''
+        },
+        behaviors:[
+              Polymer.AppScrollEffectsBehavior,
+              Polymer.IronResizableBehavior
+        ],
+        listeners: {
+            'iron-resize': '_updateOffset'
+          },
+        _updateScrollState: function(scrollTop){
+          this._lastScroll = scrollTop;
+          var contentStyle = this.$.content.style;
+          var windowHeight = window.document.documentElement.clientHeight;
+          if(scrollTop < this._top - this.top){
+            if(this._state !== 'top'){
+              contentStyle.position = '';
+              contentStyle.top = '';
+              contentStyle.left = '';
+              contentStyle.bottom = '';
+              contentStyle.width = '';
+              this._state = 'top';
+            }
+          } else if(scrollTop > 
+              this._top + this._height - this._contentHeight - this.bottom - this.top){
+            if(this._state !== 'bottom'){
+              contentStyle.position = 'absolute';
+              contentStyle.top = '';
+              contentStyle.left = '0px';
+              contentStyle.bottom = this.bottom + 'px';
+              contentStyle.width = this._width + 'px';
+              this._state = 'bottom';
+            }
+          } else {
+            if(this._state !== 'scrolling'){
+              contentStyle.position = 'fixed';
+              contentStyle.top = this.top + 'px';
+              contentStyle.left = this._left + 'px';
+              contentStyle.width = this._width + 'px';
+              contentStyle.bottom = '';
+              this._state = 'scrolling';
+            }
+
+          }
+        },
+        attached: function(){
+          this._updateOffset();
+        },
+        _updateOffset: function(){
+          this.debounce('updateOffset', function(){
+            this._width = this.offsetWidth;
+            this._height = this.offsetHeight;
+            var offset = getOffset(this);
+            this._top = offset.top;
+            this._left = offset.left;
+            this._contentHeight =  this.$.content.offsetHeight;
+            this._state = 'udate';
+            this._updateScrollState(window.pageYOffset);
+          }, 50);
+        },
+      });
+    })();
+  </script>
+</dom-module>

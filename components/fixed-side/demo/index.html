@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+  <head>
+    <title>fixed-side demo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+
+    <link rel="import" href="../fixed-side.html">
+
+    <style is="custom-style" include="demo-pages-shared-styles">
+    </style>
+  </head>
+  <body>
+
+    <div class="vertical-section-container centered">
+      <h3>Basic fixed-side Demo</h3>
+      <demo-snippet>
+        <template>
+          <style>
+            .container{
+              display: flex;
+              font-size: 13px;
+            }
+            .main{
+              width: 65%;
+              padding-right: 20px;
+            }
+            .side{
+              width: 35%;
+              border: #888 1px solid;
+            }
+            .side-content{
+              padding: 5px;
+            }
+          </style>
+          <div class="container">
+            <div class="main">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa corporis asperiores magnam dolorem culpa quod doloremque expedita omnis rerum deserunt, eius maxime voluptate, inventore at velit quae tempora perspiciatis, cupiditate. Aliquam optio veniam perspiciatis saepe cupiditate necessitatibus dolorum id reiciendis earum natus voluptatum rem maxime beatae iure, magni facere numquam et adipisci, ut repellat dicta dolores reprehenderit excepturi! Vel vero quibusdam nesciunt libero minima, modi quod ducimus tenetur! Fugit est repudiandae blanditiis debitis enim porro iste incidunt optio, iure ullam placeat sit, quia excepturi quae harum nulla aut impedit recusandae tenetur voluptatum! Molestias, recusandae, animi! Illum omnis ullam consequuntur. Quisquam obcaecati quasi cum aspernatur, sit id, asperiores labore minus nisi quae illum, pariatur ex doloremque dolores omnis ea itaque eligendi. Omnis eveniet ipsam tenetur ut at impedit fugit illum officiis? Accusantium modi quis adipisci perspiciatis officia, illo sapiente deleniti quaerat omnis placeat esse, porro minima dolore sint eos nam sequi culpa vel quo ex. Sint obcaecati perspiciatis molestias, ea. Nam repellendus magnam deleniti perspiciatis, odit eveniet necessitatibus maiores in, reiciendis animi nesciunt magni dignissimos est, iusto aliquid mollitia aliquam unde earum iste at ipsam illo veritatis adipisci! Soluta fuga quisquam, necessitatibus est modi maiores fugiat beatae? Expedita, illo! Non, incidunt.
+            </div>
+            <div class="side">
+              <fixed-side top="0" bottom="0">
+                <div class="side-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel quo nostrum praesentium quis accusamus ullam animi cum ex minus incidunt.</div>
+              </fixed-side>
+            </div>
+          </div>
+        </template>
+      </demo-snippet>
+    </div>
+    <div style="height: 400px;"></div>
+  </body>
+</html>

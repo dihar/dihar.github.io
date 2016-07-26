@@ -1,0 +1,385 @@
+/*
+LESS variables are information about icon's compiled state, stored under its original file name
+
+.icon-home {
+  width: @icon-home-width;
+}
+
+The large array-like variables contain all information about a single icon
+@icon-home: x y offset_x offset_y width height total_width total_height image_path name;
+
+At the bottom of this section, we provide information about the spritesheet itself
+@spritesheet: width height image @spritesheet-sprites;
+*/
+@aim-hover-name: 'aim-hover';
+@aim-hover-x: 94px;
+@aim-hover-y: 118px;
+@aim-hover-offset-x: -94px;
+@aim-hover-offset-y: -118px;
+@aim-hover-width: 20px;
+@aim-hover-height: 20px;
+@aim-hover-total-width: 206px;
+@aim-hover-total-height: 189px;
+@aim-hover-image: './dist/imgs/sprite.png';
+@aim-hover: 94px 118px -94px -118px 20px 20px 206px 189px './dist/imgs/sprite.png' 'aim-hover';
+@aim-name: 'aim';
+@aim-x: 74px;
+@aim-y: 118px;
+@aim-offset-x: -74px;
+@aim-offset-y: -118px;
+@aim-width: 20px;
+@aim-height: 20px;
+@aim-total-width: 206px;
+@aim-total-height: 189px;
+@aim-image: './dist/imgs/sprite.png';
+@aim: 74px 118px -74px -118px 20px 20px 206px 189px './dist/imgs/sprite.png' 'aim';
+@arr-right-name: 'arr-right';
+@arr-right-x: 0px;
+@arr-right-y: 166px;
+@arr-right-offset-x: 0px;
+@arr-right-offset-y: -166px;
+@arr-right-width: 14px;
+@arr-right-height: 23px;
+@arr-right-total-width: 206px;
+@arr-right-total-height: 189px;
+@arr-right-image: './dist/imgs/sprite.png';
+@arr-right: 0px 166px 0px -166px 14px 23px 206px 189px './dist/imgs/sprite.png' 'arr-right';
+@black-bag-name: 'black-bag';
+@black-bag-x: 161px;
+@black-bag-y: 91px;
+@black-bag-offset-x: -161px;
+@black-bag-offset-y: -91px;
+@black-bag-width: 26px;
+@black-bag-height: 26px;
+@black-bag-total-width: 206px;
+@black-bag-total-height: 189px;
+@black-bag-image: './dist/imgs/sprite.png';
+@black-bag: 161px 91px -161px -91px 26px 26px 206px 189px './dist/imgs/sprite.png' 'black-bag';
+@black-close-name: 'black-close';
+@black-close-x: 81px;
+@black-close-y: 91px;
+@black-close-offset-x: -81px;
+@black-close-offset-y: -91px;
+@black-close-width: 27px;
+@black-close-height: 27px;
+@black-close-total-width: 206px;
+@black-close-total-height: 189px;
+@black-close-image: './dist/imgs/sprite.png';
+@black-close: 81px 91px -81px -91px 27px 27px 206px 189px './dist/imgs/sprite.png' 'black-close';
+@black-logo-name: 'black-logo';
+@black-logo-x: 0px;
+@black-logo-y: 0px;
+@black-logo-offset-x: 0px;
+@black-logo-offset-y: 0px;
+@black-logo-width: 206px;
+@black-logo-height: 52px;
+@black-logo-total-width: 206px;
+@black-logo-total-height: 189px;
+@black-logo-image: './dist/imgs/sprite.png';
+@black-logo: 0px 0px 0px 0px 206px 52px 206px 189px './dist/imgs/sprite.png' 'black-logo';
+@black-rouble-name: 'black-rouble';
+@black-rouble-x: 0px;
+@black-rouble-y: 118px;
+@black-rouble-offset-x: 0px;
+@black-rouble-offset-y: -118px;
+@black-rouble-width: 26px;
+@black-rouble-height: 26px;
+@black-rouble-total-width: 206px;
+@black-rouble-total-height: 189px;
+@black-rouble-image: './dist/imgs/sprite.png';
+@black-rouble: 0px 118px 0px -118px 26px 26px 206px 189px './dist/imgs/sprite.png' 'black-rouble';
+@building-hover-name: 'building-hover';
+@building-hover-x: 114px;
+@building-hover-y: 118px;
+@building-hover-offset-x: -114px;
+@building-hover-offset-y: -118px;
+@building-hover-width: 20px;
+@building-hover-height: 20px;
+@building-hover-total-width: 206px;
+@building-hover-total-height: 189px;
+@building-hover-image: './dist/imgs/sprite.png';
+@building-hover: 114px 118px -114px -118px 20px 20px 206px 189px './dist/imgs/sprite.png' 'building-hover';
+@building-name: 'building';
+@building-x: 134px;
+@building-y: 118px;
+@building-offset-x: -134px;
+@building-offset-y: -118px;
+@building-width: 20px;
+@building-height: 20px;
+@building-total-width: 206px;
+@building-total-height: 189px;
+@building-image: './dist/imgs/sprite.png';
+@building: 134px 118px -134px -118px 20px 20px 206px 189px './dist/imgs/sprite.png' 'building';
+@cap-hover-name: 'cap-hover';
+@cap-hover-x: 50px;
+@cap-hover-y: 118px;
+@cap-hover-offset-x: -50px;
+@cap-hover-offset-y: -118px;
+@cap-hover-width: 24px;
+@cap-hover-height: 20px;
+@cap-hover-total-width: 206px;
+@cap-hover-total-height: 189px;
+@cap-hover-image: './dist/imgs/sprite.png';
+@cap-hover: 50px 118px -50px -118px 24px 20px 206px 189px './dist/imgs/sprite.png' 'cap-hover';
+@cap-name: 'cap';
+@cap-x: 26px;
+@cap-y: 118px;
+@cap-offset-x: -26px;
+@cap-offset-y: -118px;
+@cap-width: 24px;
+@cap-height: 20px;
+@cap-total-width: 206px;
+@cap-total-height: 189px;
+@cap-image: './dist/imgs/sprite.png';
+@cap: 26px 118px -26px -118px 24px 20px 206px 189px './dist/imgs/sprite.png' 'cap';
+@close-name: 'close';
+@close-x: 0px;
+@close-y: 52px;
+@close-offset-x: 0px;
+@close-offset-y: -52px;
+@close-width: 35px;
+@close-height: 39px;
+@close-total-width: 206px;
+@close-total-height: 189px;
+@close-image: './dist/imgs/sprite.png';
+@close: 0px 52px 0px -52px 35px 39px 206px 189px './dist/imgs/sprite.png' 'close';
+@fb-disable-name: 'fb-disable';
+@fb-disable-x: 108px;
+@fb-disable-y: 91px;
+@fb-disable-offset-x: -108px;
+@fb-disable-offset-y: -91px;
+@fb-disable-width: 27px;
+@fb-disable-height: 27px;
+@fb-disable-total-width: 206px;
+@fb-disable-total-height: 189px;
+@fb-disable-image: './dist/imgs/sprite.png';
+@fb-disable: 108px 91px -108px -91px 27px 27px 206px 189px './dist/imgs/sprite.png' 'fb-disable';
+@fb-name: 'fb';
+@fb-x: 94px;
+@fb-y: 52px;
+@fb-offset-x: -94px;
+@fb-offset-y: -52px;
+@fb-width: 27px;
+@fb-height: 27px;
+@fb-total-width: 206px;
+@fb-total-height: 189px;
+@fb-image: './dist/imgs/sprite.png';
+@fb: 94px 52px -94px -52px 27px 27px 206px 189px './dist/imgs/sprite.png' 'fb';
+@medal-hover-name: 'medal-hover';
+@medal-hover-x: 21px;
+@medal-hover-y: 144px;
+@medal-hover-offset-x: -21px;
+@medal-hover-offset-y: -144px;
+@medal-hover-width: 21px;
+@medal-hover-height: 22px;
+@medal-hover-total-width: 206px;
+@medal-hover-total-height: 189px;
+@medal-hover-image: './dist/imgs/sprite.png';
+@medal-hover: 21px 144px -21px -144px 21px 22px 206px 189px './dist/imgs/sprite.png' 'medal-hover';
+@medal-name: 'medal';
+@medal-x: 0px;
+@medal-y: 144px;
+@medal-offset-x: 0px;
+@medal-offset-y: -144px;
+@medal-width: 21px;
+@medal-height: 22px;
+@medal-total-width: 206px;
+@medal-total-height: 189px;
+@medal-image: './dist/imgs/sprite.png';
+@medal: 0px 144px 0px -144px 21px 22px 206px 189px './dist/imgs/sprite.png' 'medal';
+@ok-disable-name: 'ok-disable';
+@ok-disable-x: 54px;
+@ok-disable-y: 91px;
+@ok-disable-offset-x: -54px;
+@ok-disable-offset-y: -91px;
+@ok-disable-width: 27px;
+@ok-disable-height: 27px;
+@ok-disable-total-width: 206px;
+@ok-disable-total-height: 189px;
+@ok-disable-image: './dist/imgs/sprite.png';
+@ok-disable: 54px 91px -54px -91px 27px 27px 206px 189px './dist/imgs/sprite.png' 'ok-disable';
+@ok-name: 'ok';
+@ok-x: 27px;
+@ok-y: 91px;
+@ok-offset-x: -27px;
+@ok-offset-y: -91px;
+@ok-width: 27px;
+@ok-height: 27px;
+@ok-total-width: 206px;
+@ok-total-height: 189px;
+@ok-image: './dist/imgs/sprite.png';
+@ok: 27px 91px -27px -91px 27px 27px 206px 189px './dist/imgs/sprite.png' 'ok';
+@pdf-blue-name: 'pdf-blue';
+@pdf-blue-x: 68px;
+@pdf-blue-y: 52px;
+@pdf-blue-offset-x: -68px;
+@pdf-blue-offset-y: -52px;
+@pdf-blue-width: 26px;
+@pdf-blue-height: 31px;
+@pdf-blue-total-width: 206px;
+@pdf-blue-total-height: 189px;
+@pdf-blue-image: './dist/imgs/sprite.png';
+@pdf-blue: 68px 52px -68px -52px 26px 31px 206px 189px './dist/imgs/sprite.png' 'pdf-blue';
+@play-name: 'play';
+@play-x: 135px;
+@play-y: 91px;
+@play-offset-x: -135px;
+@play-offset-y: -91px;
+@play-width: 26px;
+@play-height: 27px;
+@play-total-width: 206px;
+@play-total-height: 189px;
+@play-image: './dist/imgs/sprite.png';
+@play: 135px 91px -135px -91px 26px 27px 206px 189px './dist/imgs/sprite.png' 'play';
+@schoolbag-hover-name: 'schoolbag-hover';
+@schoolbag-hover-x: 154px;
+@schoolbag-hover-y: 118px;
+@schoolbag-hover-offset-x: -154px;
+@schoolbag-hover-offset-y: -118px;
+@schoolbag-hover-width: 19px;
+@schoolbag-hover-height: 17px;
+@schoolbag-hover-total-width: 206px;
+@schoolbag-hover-total-height: 189px;
+@schoolbag-hover-image: './dist/imgs/sprite.png';
+@schoolbag-hover: 154px 118px -154px -118px 19px 17px 206px 189px './dist/imgs/sprite.png' 'schoolbag-hover';
+@schoolbag-name: 'schoolbag';
+@schoolbag-x: 187px;
+@schoolbag-y: 91px;
+@schoolbag-offset-x: -187px;
+@schoolbag-offset-y: -91px;
+@schoolbag-width: 19px;
+@schoolbag-height: 17px;
+@schoolbag-total-width: 206px;
+@schoolbag-total-height: 189px;
+@schoolbag-image: './dist/imgs/sprite.png';
+@schoolbag: 187px 91px -187px -91px 19px 17px 206px 189px './dist/imgs/sprite.png' 'schoolbag';
+@ticket-arr-name: 'ticket-arr';
+@ticket-arr-x: 35px;
+@ticket-arr-y: 52px;
+@ticket-arr-offset-x: -35px;
+@ticket-arr-offset-y: -52px;
+@ticket-arr-width: 33px;
+@ticket-arr-height: 38px;
+@ticket-arr-total-width: 206px;
+@ticket-arr-total-height: 189px;
+@ticket-arr-image: './dist/imgs/sprite.png';
+@ticket-arr: 35px 52px -35px -52px 33px 38px 206px 189px './dist/imgs/sprite.png' 'ticket-arr';
+@tw-disable-name: 'tw-disable';
+@tw-disable-x: 148px;
+@tw-disable-y: 52px;
+@tw-disable-offset-x: -148px;
+@tw-disable-offset-y: -52px;
+@tw-disable-width: 27px;
+@tw-disable-height: 27px;
+@tw-disable-total-width: 206px;
+@tw-disable-total-height: 189px;
+@tw-disable-image: './dist/imgs/sprite.png';
+@tw-disable: 148px 52px -148px -52px 27px 27px 206px 189px './dist/imgs/sprite.png' 'tw-disable';
+@tw-name: 'tw';
+@tw-x: 0px;
+@tw-y: 91px;
+@tw-offset-x: 0px;
+@tw-offset-y: -91px;
+@tw-width: 27px;
+@tw-height: 27px;
+@tw-total-width: 206px;
+@tw-total-height: 189px;
+@tw-image: './dist/imgs/sprite.png';
+@tw: 0px 91px 0px -91px 27px 27px 206px 189px './dist/imgs/sprite.png' 'tw';
+@vk-disable-name: 'vk-disable';
+@vk-disable-x: 175px;
+@vk-disable-y: 52px;
+@vk-disable-offset-x: -175px;
+@vk-disable-offset-y: -52px;
+@vk-disable-width: 27px;
+@vk-disable-height: 27px;
+@vk-disable-total-width: 206px;
+@vk-disable-total-height: 189px;
+@vk-disable-image: './dist/imgs/sprite.png';
+@vk-disable: 175px 52px -175px -52px 27px 27px 206px 189px './dist/imgs/sprite.png' 'vk-disable';
+@vk-name: 'vk';
+@vk-x: 121px;
+@vk-y: 52px;
+@vk-offset-x: -121px;
+@vk-offset-y: -52px;
+@vk-width: 27px;
+@vk-height: 27px;
+@vk-total-width: 206px;
+@vk-total-height: 189px;
+@vk-image: './dist/imgs/sprite.png';
+@vk: 121px 52px -121px -52px 27px 27px 206px 189px './dist/imgs/sprite.png' 'vk';
+@spritesheet-width: 206px;
+@spritesheet-height: 189px;
+@spritesheet-image: './dist/imgs/sprite.png';
+@spritesheet-sprites: @aim-hover @aim @arr-right @black-bag @black-close @black-logo @black-rouble @building-hover @building @cap-hover @cap @close @fb-disable @fb @medal-hover @medal @ok-disable @ok @pdf-blue @play @schoolbag-hover @schoolbag @ticket-arr @tw-disable @tw @vk-disable @vk;
+@spritesheet: 206px 189px './dist/imgs/sprite.png' @spritesheet-sprites;
+
+/*
+The provided classes are intended to be used with the array-like variables
+
+.icon-home {
+  .sprite-width(@icon-home);
+}
+.icon-email {
+  .sprite(@icon-email);
+}
+
+Example usage in HTML:
+
+`display: block` sprite:
+<div class="icon-home"></div>
+
+To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
+
+// CSS
+.icon {
+  display: inline-block;
+}
+
+// HTML
+<i class="icon icon-home"></i>
+*/
+.sprite-width(@sprite) {
+  width: extract(@sprite, 5);
+}
+
+.sprite-height(@sprite) {
+  height: extract(@sprite, 6);
+}
+
+.sprite-position(@sprite) {
+  @sprite-offset-x: extract(@sprite, 3);
+  @sprite-offset-y: extract(@sprite, 4);
+  background-position: @sprite-offset-x @sprite-offset-y;
+}
+
+.sprite-image(@sprite) {
+  @sprite-image: extract(@sprite, 9);
+  @sprite-image-bare: ~`"@{sprite-image}".slice(1, -1)`;
+  background-image: url(@sprite-image-bare);
+}
+
+.sprite(@sprite) {
+  .sprite-image(@sprite);
+  .sprite-position(@sprite);
+  .sprite-width(@sprite);
+  .sprite-height(@sprite);
+}
+
+/*
+The `.sprites` mixin generates identical output to the CSS template
+  but can be overridden inside of LESS
+
+This must be run when you have at least 2 sprites.
+  If run with a single sprite, then there will be reference errors.
+
+.sprites(@spritesheet-sprites);
+*/
+.sprites(@sprites, @i: 1) when (@i <= length(@sprites)) {
+  @sprite: extract(@sprites, @i);
+  @sprite-name: e(extract(@sprite, 10));
+  .@{sprite-name} {
+    .sprite(@sprite);
+  }
+  .sprites(@sprites, @i + 1);
+}

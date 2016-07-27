@@ -1,0 +1,652 @@
+<link rel="import" href="/components/polymer/polymer.html">
+<link rel="import" href="/components/iron-resizable-behavior/iron-resizable-behavior.html">
+
+<!--
+# lms-map-grid
+
+create unusial grid from elements
+
+## Example
+
+```
+<lms-map-grid has-trunk bottom="150">
+	<div class="item" data-left="(50% - 70%t);[1170](50%) data-top="30"">
+		<div class="item__block item__block_position_left"></div>
+		<div class="item__block item__block_position_right"></div>
+	</div>
+	<div class="item" data-right="(30px);[1170](20%) data-top="(30);[1170](70)">
+		<div class="item__block item__block_position_left"></div>
+		<div class="item__block item__block_position_right"></div>
+	</div>
+	<div class="item" data-left="30px">
+		<div class="item__block item__block_position_left"></div>
+		<div class="item__block item__block_position_right"></div>
+	</div>
+</lms-map-grid>
+```
+
+__The child elements of items must be in row!__
+
+Thanks Raphael Amorim with [waterfall.js](https://github.com/raphamorim/waterfall);
+
+-->
+
+<dom-module id="lms-map-grid">
+	<template>
+		<style>
+			:host {
+				display: block;
+				box-sizing: border-box;
+				position: relative;
+				overflow: hidden;
+			}
+			.svg-trunk{
+				display: block;
+				height: 100%;
+				width: 100%;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+			#content{
+				position: relative;
+			}
+		</style>
+		<content id="content"></content>
+	</template>
+	<script src="/components/snap.svg/dist/snap.svg-min.js"></script>
+	<script>
+		(function() {
+			'use strict';
+			function createGrid(container, params){
+				if(typeof(container) === 'string')
+			        container = document.querySelector(container);
+
+			   	container.style.position = 'relative';
+
+			   	var containerWidth = width(container);
+
+			   	var topArr = [0, containerWidth];
+			   	var topArrVal = [0];
+
+			   	var prevMaxTop = 0;
+
+			   	[].forEach.call(container.children, function(el, numEl){
+
+			   		if (el.nodeName.toLowerCase() === 'svg') {
+			   			return false
+			   		}
+
+		            el.style.position = 'absolute';
+
+		            el.style.left = parseMediaAttrVal(el.getAttribute('data-left'), containerWidth, function(result){
+		            	if(result){
+		            		var styleLeft = parseAttrVal(result, el, containerWidth);
+		            		styleLeft = styleLeft >= 0 ? styleLeft : 0;
+		            		styleLeft = styleLeft ? styleLeft + 'px' : '';
+			            	return styleLeft;
+
+		            	}
+		            	return '';
+		            });
+			   		el.style.right = parseMediaAttrVal(el.getAttribute('data-right'), containerWidth, function(result){
+			   			if(result){
+				   			var styleRight = parseAttrVal(result, el, containerWidth);
+				   			styleRight = styleRight >= 0 ? styleRight : 0;
+		            		styleRight = styleRight ? styleRight + 'px' : '';
+			            	return styleRight;
+				   		}
+				   		return '';
+			   		});
+
+			   		var elWidth = width(el);
+			   		var elLeft = left(el);
+
+			   		var maxTop = Math.max(getMaxTop(elLeft, elLeft + elWidth), prevMaxTop);
+
+			   		prevMaxTop = maxTop;
+
+			   		var newElTop = maxTop + parseFloat(parseMediaAttrVal(
+			   				el.getAttribute('data-top') || 0, containerWidth, function(result){
+			   					return result;
+			   				}));
+
+			   		// for svg
+			   		var svgEl = {
+			   			width: elWidth,
+			   			height: height(el),
+			   			left: elLeft,
+			   			top: newElTop
+			   		}
+			   		var svgEls = [];
+
+
+			   		el.style.top = newElTop + 'px';
+
+			   		var forChildClosureLeft = 0;
+
+	            	[].forEach.call(el.children, function(child){
+
+	            		var childWidth = width(child);
+	            		var childHeight = height(child);
+
+	            		if(style(child).position === 'absolute'){
+		            		var childLeft = left(child) + elLeft;
+		            		var childTop = top(child) + newElTop;
+	            		} else {
+	            			var childLeft = forChildClosureLeft + elLeft;
+	            			forChildClosureLeft += left(child) - right(child) +
+	            				margin(child, 'Left') + margin(child, 'Right') + childWidth;
+	            			var childTop = newElTop + margin(child, 'Top');
+	            		}
+	            		
+	            		// for svg
+	            		svgEls.push({
+	            			width: childWidth,
+				   			height: childHeight,
+				   			left: childLeft,
+				   			top: childTop
+	            		});
+
+	            		pushTop(childLeft, childLeft + childWidth, childTop + childHeight);
+	            	});
+
+				   	// for svg
+				   	params.trunk.push(svgEl, svgEls);
+		        });
+
+			   	var containerHeight = getMaxTop(0, containerWidth) + params.bottom;
+
+			   	// for svg
+			   	params.trunk.push({
+            			width: 1,
+			   			height: 1,
+			   			left: containerWidth / 2,
+			   			top: containerHeight - 10 
+            		}, [{
+            			width: 1,
+			   			height: 1,
+			   			left: containerWidth / 2,
+			   			top: containerHeight - 10 
+            		}]);
+
+			   	container.style.height = containerHeight + 'px';
+
+
+
+			   	//parsing media query string, like [500](50px + 30%);[800](100px - 10%t);(400px) => 
+			   	//	...
+			   	//	(max-width: 800px)...
+			   	//	(max-width: 800px)...
+			   	// width relatively by container
+			   	function parseMediaAttrVal(str, containerWidth, callback, log){
+
+			   		str = str ? str+'' : '';
+
+			   		var mStrs = str.split(';');
+
+			   		var medias = {};
+
+			   		mStrs.forEach(function(media){
+			   			var expMedia = media.match(/\((.+?)\)/i);
+			   			if(expMedia){
+			   				var expression = expMedia[1];
+			   				var mediaQuery = media.match(/\[(.+?)\]/i);
+			   				if(mediaQuery){
+			   					medias[parseInt(mediaQuery[1]) || 0] = expression;
+			   				} else {
+			   					medias[0] = expression;
+			   				}
+			   			} else{
+			   				medias[0] = media;
+			   			}
+			   		});
+
+			   		var mediaArr = [];
+			   		for(var media in medias){
+			   			if(medias.hasOwnProperty(media)){
+				   			mediaArr.push(parseInt(media));
+			   			}
+			   		}
+
+			   		mediaArr.sort(function(a, b){
+			   			return b - a; 
+			   		});
+
+			   		var result = medias[0] || '';
+			   		mediaArr.forEach(function(media){
+			   			if(media > containerWidth){
+			   				result = medias[media];
+			   			}
+			   		});
+			   		return callback(result);
+			   	}
+
+			   	/* make this (12%+3px - 23%t) to px, simple % is relatively by container width, and %t is translate percentes*/
+			   	function parseAttrVal(str, el, containerWidth){
+			   		if(str == '\'\''){
+			   			str = '';
+			   		}
+			   		str = str || '';
+			   		var result = 0;
+			   		var nextAction = 'plus';
+
+					if(/px|%|\+|-|\*|\//.test(str)){
+						var resExec;
+						var regexp = /(\d+.?\d*px)|(\d+.?\d*%t)|(\d+.?\d*%)|(\+|-|\*|\/)/ig;
+						while(resExec = regexp.exec(str)){
+							if(resExec[1]){
+								var val = parseFloat(resExec[1].replace('px', ''));
+								result = doNextAction(result, val, nextAction);
+								nextAction = 'plus';
+							} else if(resExec[2]){
+								var val = parseFloat(resExec[2].replace('%t', '')) * width(el) / 100;
+								result = doNextAction(result, val, nextAction);
+								nextAction = 'plus';
+							} else if(resExec[3]){
+								var val = parseFloat(resExec[3].replace('%', '')) * containerWidth / 100;
+								result = doNextAction(result, val, nextAction);
+								nextAction = 'plus';
+							} else if(resExec[4]){
+								switch(resExec[4]){
+									case '+': 
+										nextAction = 'plus';
+										break;
+									case '*': 
+										nextAction = 'multi';
+										break;
+									case '/': 
+										nextAction = 'division';
+										break;
+									case '-': 
+										nextAction = 'minus';
+										break;
+								}
+							}
+						}
+
+						return result;
+
+					} else{
+						return str;
+					}	   		
+			   	}
+
+			   	function doNextAction(result, val, nextAction){
+			   		switch(nextAction){
+			   			case 'minus':
+			   				return result - val;
+			   			case 'multi': 
+			   				return result * val;
+			   			case 'division': 
+			   				return result / val;
+			   			default: 
+			   				return result + val;
+			   		}
+			   	}
+
+
+			   	/*add to arrays of height value*/
+			   	function pushTop(left, right, top){
+			   		var insert = {};
+			   		topArr.reduce(function(prev, curr, index){
+			   			if(left >= prev && left <= curr){
+			   				insert.leftIndex = index;
+			   			}
+			   			if(right >= prev && right <= curr){
+			   				insert.rightIndex = index;
+			   			}
+			   			return curr;
+			   		});
+
+			   		topArr.splice(insert.leftIndex, insert.rightIndex - insert.leftIndex, left, right);
+
+			   		Array.prototype.splice.bind(topArrVal, insert.leftIndex, 
+			   			Math.max(insert.rightIndex - insert.leftIndex - 1, 0))
+			   			.apply(topArrVal, insert.rightIndex - insert.leftIndex > 0 ? 
+			   				[top] : [top, topArrVal[insert.leftIndex - 1]]);
+
+			   	}
+
+
+			   	function getMaxTop(left, right){
+			   		var maxTop = 0;
+
+			   		var distance = {};
+			   		topArr.reduce(function(prev, curr, index){
+			   			if(left >= prev && left <= curr){
+			   				distance.leftIndex = index;
+			   			}
+			   			if(right >= prev && right <= curr){
+			   				distance.rightIndex = index;
+			   			}
+			   			return curr;
+			   		});
+
+			   		for(var i = distance.leftIndex; i <= distance.rightIndex; i++){
+			   			maxTop = Math.max(maxTop, topArrVal[i - 1]);
+			   		}
+
+			   		return maxTop;
+			   	}
+			   	
+				/*Helpers*/
+				var compStyleCache;
+
+			   	function style(el){
+			   		compStyleCache = compStyleCache || [];
+			   		var compStyles;
+			   		if(el._compStyleChached !== undefined && compStyleCache[el._compStyleChached]){
+			   			compStyles = compStyleCache[el._compStyleChached];
+			   		} else {
+			   			el._compStyleChached = compStyleCache.length;
+			   			compStyles = window.getComputedStyle(el);
+			   			compStyleCache.push(compStyles);
+			   		}
+			   		return compStyles; 
+			   	}
+
+			   	function width(el){ return parseFloat(style(el).width) || 0; }
+			   	function height(el){ return parseFloat(style(el).height) || 0; }
+			   	function left(el){ return parseFloat(style(el).left) || 0; }
+			   	function right(el){ return parseFloat(style(el).right) || 0; }
+			   	function top(el){ return parseFloat(style(el).top) || 0; }
+			   	function margin(el, dir){ return parseFloat(style(el)['margin'+dir]) || 0; }
+
+			}
+
+
+		   	/*svg liner*/
+		    function TrunkCreater(){
+		   		var elSides = [];
+		   		return{
+		   			/*childParams = [{width, height, left, top},...]*/
+		   			push: function(containerParams, childParams){
+		   				if(!childParams.length){
+		   					return false;
+		   				}
+
+		   				var sides = {};
+		   				sides.top = {
+		   					left: {
+		   						x: childParams[0].width / 2 + childParams[0].left,
+		   						y: childParams[0].top
+		   					},
+		   					middle: {
+		   						x: containerParams.width / 2 + containerParams.left,
+		   						y: containerParams.top
+		   					},
+		   					right: {
+		   						x: childParams[childParams.length - 1].width / 2 + childParams[childParams.length - 1].left,
+		   						y: childParams[childParams.length - 1].top
+		   					}
+		   				};
+
+		   				sides.bottom = {
+		   					left: {
+		   						x: childParams[0].width / 2 + childParams[0].left,
+		   						y: childParams[0].top + childParams[0].height
+		   					},
+		   					middle: {
+		   						x: containerParams.width / 2 + containerParams.left,
+		   						y: containerParams.top + containerParams.height
+		   					},
+		   					right: {
+		   						x: childParams[childParams.length - 1].width / 2 + childParams[childParams.length - 1].left,
+		   						y: childParams[childParams.length - 1].top + childParams[childParams.length - 1].height
+		   					}
+		   				}
+
+		   				sides.middle = {
+		   					left: {
+		   						x: childParams[0].left,
+		   						y: childParams[0].top + childParams[0].height / 2
+		   					},
+		   					right: {
+		   						x: childParams[childParams.length - 1].left + childParams[childParams.length - 1].width,
+		   						y: childParams[childParams.length - 1].top + childParams[childParams.length - 1].height / 2
+		   					}
+		   				}
+		   				elSides.push({sides: sides, container: containerParams});
+		   			},
+		   			create: function(node, redraw){
+		   				var canvas = Snap(node);
+		   				canvas.clear();
+
+		   				var g = canvas.g().attr({fill: 'none', strokeLinecap: 'round', stroke: '#d5d6d8'});
+		   				var animationDur = redraw ? 0 : 1000;
+
+		   				elSides.slice(1).forEach(function(el, i){
+		   					setTimeout(function(i){
+
+			   					var prevEl = elSides[i];
+
+			   					var directions = compaireElements(prevEl, el);
+
+			   					var direction1 = directions[1];
+			   					var pos1 = elSides[i].sides[direction1[0]][direction1[1]];
+
+								var direction2 = directions[0];
+			   					var pos2 = el.sides[direction2[0]][direction2[1]];
+
+			   					//first point
+			   					g.line(pos1.x, pos1.y, pos1.x, pos1.y).attr({
+			   						strokeWidth: 1
+			   					}).animate({
+			   						strokeWidth: 12
+			   					}, animationDur, mina.elastic);
+			   					
+			   					//line
+			   					var paper = Snap();
+
+			   					var pathForLine = paper.path(getPath(pos1, pos2));
+			   					var lineLength = pathForLine.getTotalLength();
+								var dashArr = Array(Math.round(lineLength / 14)).join('0,14,');
+								dashArr+='0,'+lineLength;
+
+
+			   					g.append(pathForLine);
+			   					pathForLine.attr({
+			   						strokeWidth: 3,
+			   						strokeDasharray: dashArr,
+			   						strokeDashoffset: lineLength
+			   					})
+			   					.animate({
+			   						strokeDashoffset: 0
+			   					}, animationDur, mina.easein, function(){
+			   						lastPoint.animate({
+				   						strokeWidth: 12
+				   					}, Math.round(animationDur/2), mina.elastic);
+			   					});
+
+			   					//last point
+			   					var lastPoint = g.line(pos2.x, pos2.y, pos2.x, pos2.y).attr({
+			   						strokeWidth: 1
+			   					});
+			   					paper.remove();
+		   					}.bind(el, i), animationDur*i);
+		   				});
+
+		   				return canvas;
+		   			}
+		   		}
+		   	}
+
+		   	/** return Array, like [['middle', 'right'], ['top', 'left']]*/
+		   	function compaireElements(el1, el2){
+		   		var firstPoint = [];
+		   		var secondPoint = [];
+		   		var point2Position = [];
+
+		   		var firstPointVert = getComaireVert(el2.sides, el1.sides);
+		   		firstPoint.push(firstPointVert, 
+		   			getComaireHoriz(el2.sides, el1.sides));
+		   		firstPoint = checkMiddleMiddle(el2.sides, el1.sides, firstPoint);
+
+		   		var secondPointVert = getComaireVert(el1.sides, el2.sides);
+		   		secondPoint.push(secondPointVert, 
+		   			getComaireHoriz(el1.sides, el2.sides));
+		   		secondPoint = checkMiddleMiddle(el1.sides, el2.sides, secondPoint);
+
+		   		point2Position.push(firstPoint, secondPoint);
+		   		return point2Position;
+		   	}
+
+		   	function getComaireVert(el1, el2){
+		   		if(el2.bottom.middle.y < el1.top.middle.y){
+		   			return 'top';
+		   		} else if(el2.top.middle.y > el1.bottom.middle.y){
+		   			return 'bottom';
+		   		} else {
+		   			return 'middle';
+		   		}
+		   	}
+
+		   	function getComaireHoriz(el1, el2){
+		   		if(el2.middle.left.x > el1.middle.right.x){
+		   			return 'right';
+		   		} else if(el2.middle.right.x < el1.middle.left.x){
+		   			return 'left';
+		   		} else {
+		   			return 'middle';
+		   		}
+		   	}
+
+		   	function checkMiddleMiddle(el1, el2, arr){
+		   		if(arr[0] != arr[1]){
+		   			return arr;
+		   		}
+		   		if(el2.top.middle.x > el1.top.middle.x){
+		   			if(el2.bottom.left.y < el1.top.right.y){
+		   				return ['top', 'right'];
+		   			}
+		   			if(el2.top.left.y > el1.bottom.right.y){
+		   				return ['bottom', 'right'];
+		   			} else {
+		   				return ['middle', 'right'];
+		   			}
+		   		} else {
+		   			if(el2.bottom.right.y < el1.top.left.y){
+		   				return ['top', 'left'];
+		   			}
+		   			if(el2.top.right.y > el1.bottom.left.y){
+		   				return ['bottom', 'left'];
+		   			} else {
+		   				return ['middle', 'left'];
+		   			}
+		   		}
+		   	}
+
+		   	function getPath(p1, p2){
+		   		var length = Math.sqrt(Math.pow(p2.x - p1.x, 2) + Math.pow(p2.y - p1.y, 2));
+		   		var cos = (p2.x - p1.x) / length;
+		   		var sin = (p2.y - p1.y) / length;
+		   		var ortoCos = cos > 0 ? 1-cos : 1 + cos;
+		   		var ortoSin = sin > 0 ? 1-sin : 1 + sin;
+
+		   		var curvature = length / 4;
+
+		   		var pointsCount = 2;
+		   		var points = [];
+		   		var qPoints = [];
+
+		   		if(length > 400){
+		   			pointsCount = 3;
+		   		}
+
+		   		for(var i = 0; i < pointsCount; i++){
+		   			var mirror = i % 2 == 0 ? 1 : -1;
+		   			var qPoint = {
+		   				x: (function(){
+		   					return p1.x + (p2.x - p1.x) / (pointsCount + 1) * (i + 1) + curvature*ortoCos*mirror;
+		   				})(),
+		   				y: (function(){
+		   					return p1.y + (p2.y - p1.y) / (pointsCount + 1) * (i + 1) + curvature*ortoSin*mirror;
+		   				})()
+		   			}
+		   			qPoints.push(qPoint);
+		   		}
+
+		   		for(var i = 0; i < pointsCount - 1; i++){
+		   			var point = {
+		   				x: (function(){
+		   					return p1.x + (p2.x - p1.x) / (pointsCount) * (i + 1);
+		   				})(),
+		   				y: (function(){
+		   					return p1.y + (p2.y - p1.y) / (pointsCount) * (i + 1);
+		   				})()
+		   			}
+		   			points.push(point);
+		   		}
+
+		   		points.push({x: p2.x, y: p2.y});
+
+		   		var path = '';
+
+		   		path+='M'+p1.x+','+p1.y;
+		   		qPoints.forEach(function(el, i){
+		   			path+='Q'+el.x+','+el.y+','+points[i].x+','+points[i].y;
+		   		});
+
+		   		return path;
+		   	}
+
+			Polymer({
+				is: 'lms-map-grid',
+				properties: {
+					_resolveInit: false,
+					/** if true, add svg lines*/
+					hasTrunk: {
+						value: false,
+						type: Boolean
+					},
+					/** bottom padding of container*/
+					bottom:{
+						value: 0,
+						type: Number
+					}
+				},
+				behaviors: [
+					Polymer.IronResizableBehavior
+				],
+				listeners: {
+		            'iron-resize': '_resizeHandle'
+		        },
+		        attached: function(){
+		        	Polymer.dom.flush();
+		        	this.async(function(){
+		        		this._resolveInit = true;
+			        	this._init();
+		        	});
+		        },
+		        _resizeHandle: function(){
+					this._init(true);
+		        },
+		        _init: function(inResize){
+		        	if (!this._resolveInit){
+		        		return false;
+		        	}
+		        	this.debounce('grid-creater',function(){
+			        	var trunkCreater = TrunkCreater();
+			        	createGrid(Polymer.dom(this).node, {bottom: this.bottom, trunk: trunkCreater});
+
+			        	if(this.hasTrunk){
+
+			        		var svg = Snap(parseFloat(this.getComputedStyleValue('width')), parseFloat(this.getComputedStyleValue('height')));
+			        		svg.node.classList.add('svg-trunk');
+			        		var old_svg = this.$$('.svg-trunk');
+			        		old_svg && Polymer.dom(this.root).removeChild(old_svg);
+			        		Polymer.dom(this.root).appendChild(svg.node);
+			        		var svg;
+								svg = trunkCreater.create(svg.node, inResize);
+			        	}
+			        }, 50);
+		        },
+		        /** rebuild grid*/
+		        rebuild: function(){
+		        	this._init(true);
+		        }
+			});
+		})();
+	</script>
+</dom-module>

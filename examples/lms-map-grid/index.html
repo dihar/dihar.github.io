@@ -1,0 +1,227 @@
+<!doctype html>
+<html>
+  <head>
+    <title>lms-map-grid Demo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+    <script src="/components/webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="/components/iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="/components/iron-demo-helpers/demo-snippet.html">
+    <link rel="import" href="/components/paper-button/paper-button.html">
+
+    <link rel="import" href="./lms-map-grid/elements/lms-map-grid.html">
+
+    <style is="custom-style" include="demo-pages-shared-styles">
+    </style>
+    <style is="custom-style">
+      .centered{
+        max-width: none;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="vertical-section-container centered">
+      <h3>lms-map-grid Demo</h3>
+      <p>Component hasn't finished yet. Contact me if you want try it</p>
+      <demo-snippet>
+        <template>
+
+        <style>
+          .course-map {
+            font-size: 15px;
+            text-align: center; }
+            .course-map__h1 {
+              font-size: 38px;
+              font-weight: 700;
+              text-align: left; }
+            .course-map__img {
+              width: 100%;
+              display: block; }
+            .course-map__h2 {
+              font-weight: 700;
+              font-size: 30px;
+              text-align: center; }
+            .course-map__tags {
+              max-width: 650px;
+              margin: auto; }
+            .course-map__button {
+              margin: 50px 0 80px; }
+            .course-map__wrap-bg {
+              padding: 20px 0 0; }
+
+          .course-step {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-align: start;
+            align-items: flex-start;
+            text-align: left;
+            z-index: 2; }
+            .course-step__icon-container {
+              text-align: center;
+              padding-right: 20px; }
+            .course-step__text-container {
+              width: 220px; }
+            .course-step__title {
+              font-size: 20px;
+              font-weight: 600;
+              color: #3a7ad9;
+              line-height: 23px;
+              margin: 0 0 10px; }
+              .course-step__title_not-complete {
+                color: #000; }
+            .course-step__percents {
+              color: #fff;
+              font-weight: 600;
+              background: #000;
+              font-size: 18px;
+              display: inline-block;
+              padding: 2px 1px;
+              margin-bottom: 3px; }
+            .course-step__text {
+              margin-bottom: 25px;
+              font-size: 15px; }
+            .course-step__complete-list {
+              margin: 0;
+              padding: 0;
+              list-style: none; }
+            .course-step__complete-item {
+              font-size: 15px;
+              font-weight: 600;
+              margin-bottom: 4px; }
+            .course-step__complete-item_title {
+              font-weight: 400;
+              color: #d2d7db; }
+              .course-step__complete-item_title_not-complete {
+                color: #000; }
+        </style>
+
+        <div class="container">
+          <div class="course-map">
+            <h1 class="course-map__h1">Карта курса</h1>
+            <lms-map-grid class="course-map__grid" has-trunk bottom="150">
+              <div class="course-step" data-left="0" data-top="100">
+                <div class="course-step__icon-container">
+                  <img width="83" src="./lms-map-grid/svg/11-18.svg" alt="">
+                </div>
+                <div class="course-step__text-container" style="margin-top: 20px;">
+                  <h2 class="course-step__title">Пройти тестирование</h2>
+                  <span class="course-step__percents">66%</span><br>
+                  <div class="course-step__text">Курс пройден со средним результатом</div>
+                </div>
+              </div>
+              <div class="course-step" data-left="(50% - 70%t);[1170](50%);[845]('')" data-right="('');[845](10px)" data-top="30">
+                <div class="course-step__icon-container">
+                  <img width="170" src="./lms-map-grid/svg/11-17.svg" alt="">
+                </div>
+                <div class="course-step__text-container" style="margin-top: 60px;">
+                  <h2 class="course-step__title">Определить ценности</h2>
+                  <ul class="course-step__complete-list">
+                    <li class="course-step__complete-item course-step__complete-item_title">Пройдено</li>
+                    <li class="course-step__complete-item">10 практических заданий</li>
+                    <li class="course-step__complete-item">8 теоретических</li>
+                    <li class="course-step__complete-item">4 теста</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="course-step" data-right="(0);[845]('')" data-left="('');[845](0%)" data-top="90">
+                <div class="course-step__icon-container">
+                  <img width="170" src="./lms-map-grid/svg/11-12.svg" alt="">
+                </div>
+                <div class="course-step__text-container" style="margin-top: 67px;">
+                  <h2 class="course-step__title">Научиться ставить цели</h2>
+                  <div class="course-step__text">Построите свое колесо жизненного баланса</div>
+                  <div class="course-step__text">Сможете ставить себе цели на любой срок и в любой сфере жизни</div>
+                  <div class="course-step__text">Научитесь позитивным формулировкам целей</div>
+                  <div class="course-step__text">Поймете, как декомпозировать цели</div>
+                  <div class="course-step__text">Научитесь мотивировать себя на выполнение целей</div>
+                  <paper-button class="flat blue course-map__button">
+                    <span>Продолжить учиться</span>
+                  </paper-button>
+                </div>
+              </div>
+              <div class="course-step" data-left="(50% - 20%t);[915](5%);[1170](50% - 40%t);[845]('')" data-right="('');[845](3%)" data-top="(160);[1170](50);[915](60);[845](220);[810](0)">
+                <div class="course-step__icon-container">
+                  <img width="130" src="./lms-map-grid/svg/11-04.svg" alt="">
+                </div>
+                <div class="course-step__text-container" style="margin-top: 50px;">
+                  <h2 class="course-step__title course-step__title_not-complete">Освоить хронометраж</h2>
+                  <div class="course-step__text">Узнаете, о каком количестве времени вы владеете информацией</div>
+                  <div class="course-step__text">Определите, сколько у вас уходит на поглотители</div>
+                  <div class="course-step__text">Проанализируете свой рабочий день</div>
+                  <div class="course-step__text">Поймете, как перераспределить свое время на более важные задачи</div>
+                </div>
+              </div>
+              <div class="course-step" data-left="60px" data-top="(230);[845](20)">
+                <div class="course-step__icon-container">
+                  <img width="106" src="./lms-map-grid/svg/11-07.svg" alt="">
+                </div>
+                <div class="course-step__text-container" style="margin-top: 80px; width: 260px;">
+                  <h2 class="course-step__title course-step__title_not-complete">Научиться расставлять приоритеты</h2>
+                  <div class="course-step__text">Научитесь раскладывать свои дела по матрице эйзенхауера</div>
+                  <div class="course-step__text">Узнаете законы Паркинсона и Парето, увеличивающие вашу продуктивность</div>
+                  <div class="course-step__text">Сможете приоритезировать задачи своим подчиненным</div>
+                  <div class="course-step__text">Получите инструменты, упрощающие приоритезацию своих дел</div>
+                </div>
+              </div>
+              <div class="course-step" data-left="(0);[1150]('')" data-right="('');[1150](140px);[915](20px)" data-top="(180)">
+                <div class="course-step__icon-container">
+                  <img width="106" src="./lms-map-grid/svg/11-06.svg" alt="">
+                </div>
+                <div class="course-step__text-container" style="width: 200px;">
+                  <h2 class="course-step__title course-step__title_not-complete">Научиться делегировать задачи</h2>
+                  <div class="course-step__text">Сформируете свои правила делегирования</div>
+                  <div class="course-step__text">Научитесь определять, что можно делегировать, а что – нельзя</div>
+                  <div class="course-step__text">Поймете, кому и какие задачи нужно делегировать</div>
+                </div>
+              </div>
+              <div class="course-step" data-left="(50% - 70%t);[1150](10%)" data-top="27">
+                <div class="course-step__icon-container">
+                  <img width="130" src="./lms-map-grid/svg/11-05.svg" alt="">
+                </div>
+                <div class="course-step__text-container" style="margin-top: 70px;">
+                  <h2 class="course-step__title course-step__title_not-complete">Научиться планировать</h2>
+                  <div class="course-step__text">Составите себе план действий на три года</div>
+                  <div class="course-step__text">Познакомитесь с диаграммой ганта</div>
+                  <div class="course-step__text">Научитесь планировать деятельность за других</div>
+                  <div class="course-step__text">Узнаете об алгоритме спонтанного планирования</div>
+                  <div class="course-step__text">Потренируетесь планировать рабочую неделю</div>
+                </div>
+              </div>
+              <div class="course-step" data-right="0" data-top="60">
+                <div class="course-step__icon-container">
+                  <img width="120" src="./lms-map-grid/svg/11-08.svg" alt="">
+                </div>
+                <div class="course-step__text-container" style="margin-top: 90px;">
+                  <h2 class="course-step__title course-step__title_not-complete">Освоить корпоративный тайм-менеджмент</h2>
+                  <div class="course-step__text">Освоите очень ценное умение – говорить «нет»</div>
+                  <div class="course-step__text">Выработаете для себя правила проведения совещаний</div>
+                  <div class="course-step__text">Сможете поучаствовать в выработке корпоративных стандартов управления временем для своей компании</div>
+                </div>
+              </div>
+              <div class="course-step" data-left="50% - 50%t" data-top="70">
+                <div class="course-step__icon-container">
+                  <img width="170" src="./lms-map-grid/svg/11-09.svg" alt="">
+                </div>
+                <div class="course-step__text-container" style="margin-top: 50px;">
+                  <h2 class="course-step__title course-step__title_not-complete">Выработать личный стиль управления временем</h2>
+                  <div class="course-step__text">Определите причины вашей прокрастинации</div>
+                  <div class="course-step__text">Сформулируете для себя критерии максимальной продуктивности</div>
+                  <div class="course-step__text">Познакомитесь с технологией Scrum</div>
+                  <div class="course-step__text">Узнаете секреты повышения экологичности своей жизни</div>
+                  <div class="course-step__text">И еще раз вспомните про колесо баланса вашей жизни</div>
+                </div>
+              </div>
+            </lms-map-grid>
+          </div>
+        </div>
+
+
+
+
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

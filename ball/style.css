@@ -1,0 +1,59 @@
+@charset "UTF-8";
+
+#bord{
+border:2px solid black;
+width: 95%;
+height: 400px;
+position: relative;
+background-color: yellow;
+margin: auto;
+}
+#block1 {
+width: 50px;
+height: 50px;
+background-color: red;
+position: absolute;
+top: 0px;
+left: 0px;
+border-radius: 50%;
+z-index: 2;
+}
+#gravCenter {
+width: 20px;
+height: 20px;
+background-color: gray;
+position: absolute;
+top: 175px;
+left: 125px;
+border-radius: 50%;
+border: 15px solid #ddd;
+display: none;
+}
+#options {
+text-align: center;
+}
+#checkBlock {
+display: inline-block;
+width: 50px;
+height: 20px;
+margin-top: 5px;
+border: 1px solid black;
+border-top-left-radius: 20% 50%;
+border-top-right-radius: 20% 50%;
+border-bottom-left-radius: 20% 50%;
+border-bottom-right-radius: 20% 50%;
+position:relative;
+background:#33d;
+}
+#checkCirc {
+position: absolute;
+display: block;
+content:'';
+width: 20px;
+height: 20px;
+border-radius: 50%;
+top:0px;
+left:0px;
+background: white;
+transition: all 0.2s ease-in;
+}

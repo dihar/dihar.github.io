@@ -54,6 +54,7 @@ function oneBlock(){
         }
         else {y=0;};
       };
+      console.log(height)
       if (y+dy>HB-height) {
         if (y==HB-height) {
           dy*=-KFB;

@@ -300,19 +300,19 @@ main {
 }
 .first-window {
   padding: 132px 0 30px;
-  background: url("/dist/imgs/sky.jpg") center / cover no-repeat;
+  background: url("dist/imgs/sky.jpg") center / cover no-repeat;
   position: relative;
 }
 @media (max-width: 720px) {
   .first-window {
     padding: 87px 0 0px;
-    background: #373d46 url("/dist/imgs/sky-sm.jpg") right top / cover no-repeat;
+    background: #373d46 url("dist/imgs/sky-sm.jpg") right top / cover no-repeat;
     color: #fff;
   }
 }
 @media (max-width: 480px) {
   .first-window {
-    background: #353c46 url("/dist/imgs/sky-xs.jpg") right top / 100% no-repeat;
+    background: #353c46 url("dist/imgs/sky-xs.jpg") right top / 100% no-repeat;
   }
 }
 .first-window .main-container {
@@ -862,14 +862,14 @@ main {
 }
 .help__big-circle {
   height: 494px;
-  background: url("/dist/imgs/help-bg.jpg") center no-repeat;
+  background: url("dist/imgs/help-bg.jpg") center no-repeat;
   position: relative;
 }
 @media (max-width: 720px) {
   .help__big-circle {
     height: auto;
     padding-top: 280px;
-    background: url("/dist/imgs/help-bg-sm.jpg") center top no-repeat;
+    background: url("dist/imgs/help-bg-sm.jpg") center top no-repeat;
   }
 }
 .help__list {
@@ -1156,7 +1156,7 @@ main {
   font-size: 9px;
 }
 .programm__r-price {
-  background: #4089f8 url("/dist/imgs/price-bg.jpg") center / cover no-repeat;
+  background: #4089f8 url("dist/imgs/price-bg.jpg") center / cover no-repeat;
   margin-right: -60px;
   padding: 30px 60px 30px 30px;
   color: #fff;
@@ -1464,7 +1464,7 @@ main {
 }
 .results {
   padding: 45px 0 300px;
-  background: #e9f1fb url("/dist/imgs/meadow.jpg") center bottom / 100% no-repeat;
+  background: #e9f1fb url("dist/imgs/meadow.jpg") center bottom / 100% no-repeat;
   position: relative;
 }
 .results__h2 {

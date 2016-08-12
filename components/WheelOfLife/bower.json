@@ -1,0 +1,32 @@
+{
+  "name": "WheelOfLife",
+  "description": "Circle chart Wheel of life on svg",
+  "version": "0.0.1",
+  "main": [
+    "dist/wheelOfLife.js"
+  ],
+  "dependencies": {
+    "snap.svg": "latest"
+  },
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "circle",
+    "svg",
+    "chart"
+  ],
+  "authors": [
+    "Dmitriy Kharin <diharin@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "node_modules",
+    "bower_components",
+    ".gitignore",
+    "gulpfile.js",
+    "package.json"
+  ]
+}

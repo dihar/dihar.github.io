@@ -136,7 +136,7 @@ a:focus {
   vertical-align: top;
 }
 .first-wind {
-  background: #555 url("/dist/imgs/first-bg.jpg");
+  background: #555 url("dist/imgs/first-bg.jpg");
   color: #fff;
   padding: 40px 0 60px;
 }
@@ -557,7 +557,7 @@ a:focus {
   position: relative;
   left: -20px;
   padding-left: 30px;
-  background: url('/dist/imgs/professino-bg.png') center center / 100% no-repeat;
+  background: url('dist/imgs/professino-bg.png') center center / 100% no-repeat;
   margin-bottom: 30px;
 }
 .feedback__text {
@@ -652,7 +652,7 @@ a:focus {
   position: relative;
   left: -20px;
   padding-left: 30px;
-  background: url('/dist/imgs/professino-bg-tr.png') center center / 100% no-repeat;
+  background: url('dist/imgs/professino-bg-tr.png') center center / 100% no-repeat;
   margin-bottom: 30px;
 }
 .m-feedback__text {

@@ -143,7 +143,7 @@ a:focus {
 .first-wind__hgroup {
   padding: 0 27px;
   position: relative;
-  margin-bottom: 80px;
+  margin-bottom: 60px;
 }
 .first-wind__h1 {
   font-size: 66px;
@@ -166,7 +166,7 @@ a:focus {
   margin: 0;
 }
 .first-wind__type {
-  margin: 60px 0 70px;
+  margin: 30px 0 30px;
   padding: 0;
   list-style: none;
   display: -webkit-box;
@@ -187,7 +187,7 @@ a:focus {
   text-align: center;
   width: 174px;
   position: relative;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 .first-wind__item .icon-gloves {
   background-image: url(dist/imgs/sprite.png);
